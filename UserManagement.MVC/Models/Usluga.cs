@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -15,6 +16,8 @@ namespace UserManagement.MVC.Models
         public int UslugaId { get; set; }
         public int? KategorijaId { get; set; }
         public string NazivUsluge { get; set; }
+
+        [Column(TypeName = "decimal(18,2)")]
         public decimal CijenaUsluge { get; set; }
 
         public virtual Kategorija Kategorija { get; set; }
