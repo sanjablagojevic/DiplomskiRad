@@ -1,0 +1,28 @@
+﻿@model UserManagement.MVC.Models.Kategorija
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <h3>Da li želite da obrišete kategoriju?</h3>
+    <div>
+        <h4>Kategorija</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.NazivKategorije)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.NazivKategorije)
+            </dd>
+        </dl>
+
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="KategorijaId" />
+            <input type="submit" value="Obriši" class="btn btn-danger" /> |
+            <a asp-action="Index">Nazad na listu</a>
+        </form>
+    </div>
+</div>
