@@ -1,0 +1,26 @@
+﻿@model IEnumerable<UserManagement.MVC.Models.Utisak>
+
+
+
+<h1>Utisci</h1>
+
+
+@foreach (var utisak in Model)
+{
+<div class="card">
+    <div class="row d-flex">
+        <div class="d-flex flex-column">
+            <h3 class="mt-2 mb-0">@utisak.User.FirstName @utisak.User.LastName</h3>
+            <div>
+                <p class="text-left"><span class="text-muted">@utisak.Ocjena</span> <span class="fa fa-star star-active ml-3"></span> <span class="fa fa-star star-active"></span> <span class="fa fa-star star-active"></span> <span class="fa fa-star star-active"></span> <span class="fa fa-star star-inactive"></span></p>
+            </div>
+        </div>
+        <div class="ml-auto">
+            <p class="text-muted pt-5 pt-sm-3">@utisak.Kreirano</p>
+        </div>
+    </div>
+    <div class="row text-left">
+        <p class="content">@utisak.Komentar</p>
+    </div>
+</div>}
+

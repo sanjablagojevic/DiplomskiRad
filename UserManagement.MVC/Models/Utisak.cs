@@ -8,6 +8,10 @@ namespace UserManagement.MVC.Models
 {
     public partial class Utisak
     {
+        public Utisak()
+        {
+            Kreirano = DateTime.Now;
+        }
         public int UtisakId { get; set; }
 
         [Column(TypeName = "decimal(18,2)")]

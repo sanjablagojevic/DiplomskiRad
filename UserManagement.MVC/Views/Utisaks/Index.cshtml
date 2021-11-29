@@ -1,0 +1,176 @@
+﻿@model IEnumerable<UserManagement.MVC.Models.Utisak>
+
+
+@{
+    ViewData["Title"] = "Utisak";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .btn.btn-outline-primary:hover, .bg-primary {
+        background-color: #90B5E9 !important;
+    }
+
+    .section-medium {
+        padding: 45px 0px;
+    }
+
+    .section-arrow-primary-color.section-arrow--bottom-center:after {
+        background-color: #90B5E9 !important;
+        border-right-color: #90B5E9 !important;
+        border-bottom-color: #90B5E9 !important;
+    }
+
+    .section-arrow--bottom-center:after {
+        z-index: 1;
+        position: absolute;
+        left: 50%;
+        margin-left: -15px;
+        content: "";
+        position: absolute;
+        bottom: -15px;
+        width: 30px;
+        height: 30px;
+        border-right: 1px solid #262626;
+        border-bottom: 1px solid #262626;
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        transform: rotate(45deg);
+        background-color: #262626;
+    }
+
+    .text-white h1, .text-white h2, .text-white h3, .text-white h4, .text-white h5, .text-white h6 {
+        color: white !important;
+    }
+
+    .section-title {
+        font-size: 32px;
+        font-weight: 600;
+        margin-top: 0.45em;
+        margin-bottom: 0.35em;
+        color: #303133;
+        font-family: sans-serif;
+        letter-spacing: -0.02em;
+    }
+
+    .section-sub-title {
+        font-size: 18px;
+        margin-bottom: 20px;
+        font-weight: 400;
+        font-family: Poppins;
+    }
+
+    .section-primary {
+        padding: 75px 0px;
+    }
+
+    section {
+        position: relative;
+    }
+
+    .dugmence {
+        background-color: #90B5E9 !important;
+        border-color: #90B5E9 !important;
+    }
+
+    body {
+        background: white !important;
+    }
+
+    .text-black {
+        color: #000000;
+        font-weight: bold;
+    }
+
+    .text-header {
+        color: #518bdc;
+        font-weight: bold;
+        letter-spacing: 1.5px;
+    }
+
+    .rating-review-select-page, .text-header {
+        font-family: sans-serif;
+    }
+
+    .icon-overlap {
+        bottom: -23px;
+        font-size: 74px;
+        opacity: 0.23;
+        position: absolute;
+        right: -32px;
+    }
+
+    .menu-list img {
+        width: 41px;
+        height: 41px;
+        object-fit: cover;
+    }
+
+    .reviews-members .media .mr-3 {
+        width: 56px;
+        height: 56px;
+        object-fit: cover;
+    }
+
+    .rounded-pill {
+        border-radius: 50rem !important;
+    }
+</style>
+<section class="section-medium section-arrow--bottom-center section-arrow-primary-color bg-primary">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-white text-center">
+                <h2 class="section-title "> What Others Say About Us</h2>
+                <p class="section-sub-title">
+                    We are a passionate house keeping agency that specializes in cleaning your living
+                    <br> and work place &amp; repairing house hold devices.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="container">
+
+    @foreach (var item in Model)
+    {
+        <div class="reviews-members pt-4 pb-4">
+            <div class="media">
+                @*<a href="#" class="mr-3 rounded-pill">@Html.DisplayFor(modelItem => item.User.ProfilePicture)</a>*@
+                <div class="media-body">
+                    <div class="reviews-members-header">
+                        <h6 class="mb-1"><a class="text-header" href="#">@Html.DisplayFor(modelItem => item.User.FirstName) @Html.DisplayFor(modelItem => item.User.LastName)</a></h6>
+                    </div>
+                    <div class="reviews-members-body mt-md-3">
+                        <p class="text-header">@Html.DisplayFor(modelItem => item.Komentar)</p>
+                    </div>
+                    <div class="reviews-members-footer">
+                        <p class="font-italic text-header">Ocjena: @Html.DisplayFor(modelItem => item.Ocjena)</p>
+                    </div>
+                    <div class="reviews-members-footer">
+                        <p class="font-italic text-header">Kreirano: @Html.DisplayFor(modelItem => item.Kreirano)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    <div class="bg-white rounded shadow-lg p-4 mb-5 rating-review-select-page">
+        <h5 class="mb-4">Vaš utisak</h5>
+        <h4>Ostavite komentar i ocjenu na naše usluge.</h4>
+
+        <div class="mb-4">
+            @*<span class="star-rating">
+                    <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
+                    <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
+                    <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
+                    <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
+                    <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
+                </span>*@
+        </div>
+        <form>
+            <div class="form-group">
+                <a asp-action="Create"><input class="btn btn-primary btn-sm dugmence" type="button" value="Dodaj utisak" /></a>
+            </div>
+        </form>
+    </div>
+</div>

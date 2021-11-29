@@ -1,0 +1,37 @@
+﻿@model UserManagement.MVC.Models.Utisak
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Utisak</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Ocjena)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Ocjena)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Komentar)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Komentar)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Kreirano)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Kreirano)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.UtisakId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
