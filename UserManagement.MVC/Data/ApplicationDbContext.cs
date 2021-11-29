@@ -14,6 +14,14 @@ namespace UserManagement.MVC.Data
             : base(options)
         {
         }
+        public virtual DbSet<Kategorija> Kategorija { get; set; }
+        public virtual DbSet<NacinPlacanja> NacinPlacanja { get; set; }
+        public virtual DbSet<Narudzba> Narudzba { get; set; }
+        public virtual DbSet<Placanje> Placanje { get; set; }
+        public virtual DbSet<Radnik> Radnik { get; set; }
+        public virtual DbSet<Usluga> Usluga { get; set; }
+        public virtual DbSet<Utisak> Utisak { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -52,6 +60,7 @@ namespace UserManagement.MVC.Data
             {
                 entity.ToTable("UserTokens");
             });
+
         }
     }
 }
