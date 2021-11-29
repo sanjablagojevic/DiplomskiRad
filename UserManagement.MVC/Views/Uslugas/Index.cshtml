@@ -1,0 +1,50 @@
+﻿@model IEnumerable<UserManagement.MVC.Models.Usluga>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <div class="card-text float-right">
+      <div class="card-title">
+       <a style="color: #518bdc !important;margin-top: 10px; font-size:25px;" asp-action="Create"><i class="fas fa-plus mr-2"></i></a>
+      </div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.NazivUsluge)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CijenaUsluge)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Kategorija)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NazivUsluge)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CijenaUsluge)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Kategorija.NazivKategorije)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.UslugaId">Izmijeni</a> |
+                        @*<a asp-action="Details" asp-route-id="@item.UslugaId">Details</a>*@ |
+                        <a asp-action="Delete" asp-route-id="@item.UslugaId">Obriši</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
