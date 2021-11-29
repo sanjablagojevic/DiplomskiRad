@@ -14,5 +14,7 @@ namespace UserManagement.MVC.Models
         public decimal Ocjena { get; set; }
         public string Komentar { get; set; }
         public DateTime? Kreirano { get; set; }
+
+        public virtual ApplicationUser User { get; set; }
     }
 }
