@@ -1,49 +1,89 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Custom User Management</title>
+    <title>@ViewData["Title"] - HouseKeeping Servis</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
     <link rel="stylesheet" href="~/css/site.css" />
+
+    <!-- Font Awesome -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+    <style>
+        .footer {
+            background-color: #518bdc !important;
+            color: #F9F6F5 !important;
+        }
+
+        body {
+            font-family: sans-serif;
+        }
+    </style>
+
 </head>
-<body>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Custom User Management</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <partial name="_LoginPartial" />
-                    <ul class="navbar-nav flex-grow-1">
+        <nav class="navbar navbar-expand-md navbar-light" style=" background-color: #518bdc !important;">
+            <div class="container-fluid">
+                <a class="navbar-brand" style="color: #F9F6F5; margin-bottom:5px;" asp-area="" asp-controller="Home" asp-action="Index">HouseKeeping Servis</a>
+                <div class="navbar-collapse collapse">
+                    <ul class="navbar-nav flex-grow-1 me-auto mb-2 mb-lg-0">
+                        @*<li class="nav-item">
+        <a style="color: #F9F6F5 !important;" class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Početna</a>
+        </li>*@
+                        @if (User.IsInRole("SuperAdmin"))
+                        {
+                            <li class="nav-item dropdown">
+                                <a style="color: #F9F6F5 !important;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Katalozi
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="Kategorijas">Kategorije</a>
+                                    <a class="dropdown-item" href="Uslugas">Usluga</a>
+                                    <a class="dropdown-item" href="Cjenovniks">Cjenovnik</a>
+                                </div>
+                            </li>
+                        }
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a style="color: #F9F6F5 !important;" class="nav-link" asp-area="" asp-controller="Utisaks" asp-action="Index">Utisak</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="UserRoles" asp-action="Index">User Roles</a>
+                            <a style="color: #F9F6F5 !important;" class="nav-link" asp-area="" asp-controller="Home" asp-action="Contact">Kontakt</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="RoleManager" asp-action="Index">Role Manager</a>
+                            <a style="color: #F9F6F5 !important;" class="nav-link" asp-area="" asp-controller="Narudzbas" asp-action="Index">Narudžba</a>
+                        </li>
+                        @if (User.IsInRole("SuperAdmin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="UserRoles" asp-action="Index">User Roles</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="RoleManager" asp-action="Index">Role Manager</a>
+                            </li>
+                        }
+                        <li class="nav-item ml-auto">
+                            <partial name="_LoginPartial.cshtml" />
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+    <div class="">
+        <main role="main">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="footer text-center text-lg-start" id="footer">
         <div class="container">
-            &copy; 2020 - UserManagement.MVC - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <p style="color: #F9F6F5 !important">© Copyright 2021 - Sanja Blagojević - <a style="color: #F9F6F5 !important" asp-area="" asp-controller="Home" asp-action="Privacy">O projektu</a></p>
         </div>
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

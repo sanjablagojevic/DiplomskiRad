@@ -1,8 +1,296 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<html>
+<head>
+    <style>
+        body, p, h3, h2 {
+            text-align: center;
+            font-family: sans-serif !important;
+        }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+        #features {
+            position: relative;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+        }
+
+        .feature-box {
+            padding: 4.5%;
+        }
+
+        .icon {
+            color: #8db4e5;
+            margin-bottom: 1rem;
+        }
+
+            .icon:hover, .glyphicon:hover {
+                color: #518bdc;
+            }
+        /* Footer Section */
+        .social-icon {
+            margin: 20px 10px;
+        }
+
+        #pricing {
+            padding: 100px;
+        }
+
+        .price-text {
+            font-size: 3rem;
+            line-height: 1.5;
+        }
+
+        .pricing-column {
+            padding: 3% 2%;
+        }
+
+        .colored-section {
+            background-color: #8db4e5;
+            color: #fff;
+        }
+
+        .carousel-control-next,
+        .carousel-control-prev /*, .carousel-indicators */ {
+            filter: invert(100%);
+        }
+
+        .glyphicon {
+            font-size: 60px;
+            color: #8db4e5;
+            margin-bottom: 1rem;
+        }
+
+        .feature-box {
+            padding: 2.5% !important;
+        }
+
+        #cta {
+            height: 100px !important;
+            padding: 30px;
+        }
+
+        .img-thumbnail {
+            padding: 0px !important;
+            border: 0px solid #dddddd !important;
+            border-radius: 0px !important;
+        }
+    </style>
+
+</head>
+<body>
+
+    <!-- Features -->
+
+    <section class="white-section" id="features">
+
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="feature-box col-lg-4">
+                    <i class="icon fas fa-check-circle fa-4x"></i>
+                    <h3 class="feature-title">Set Up a Cleaning Plan</h3>
+                    <p>Choose a weekly, biweekly, or monthly cleaning plan. We schedule your recurring bookings to make things easy - but don’t worry, you can always reschedule if things change.</p>
+                </div>
+
+                <div class="feature-box col-lg-4">
+                    <i class="icon fas fa-mobile-alt fa-4x"></i>
+                    <h3 class="feature-title">Manage Everything Online</h3>
+                    <p>Rescheduling, contacting your professional, and tipping are just a tap away.</p>
+                </div>
+
+                <div class="feature-box col-lg-4">
+                    <i class="icon fas fa-heart fa-4x"></i>
+                    <h3 class="feature-title">Sit Back and Relax</h3>
+                    <p>An experienced, fully-equipped housekeeping professional will be there on time.</p>
+                </div>
+                <div class="feature-box col-sm-4">
+                    <span class="glyphicon glyphicon-lock logo-large"></span>
+                    <h3 class="feature-title">LOVE</h3>
+                    <p>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</p>
+                </div>
+                <div class="feature-box col-sm-4">
+                    <span class="glyphicon glyphicon-home logo-large"></span>
+                    <h3 class="feature-title">LOVE</h3>
+                    <p>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</p>
+                </div>
+                <div class="feature-box col-sm-4">
+                    <span class="glyphicon glyphicon-wrench logo-large"></span>
+                    <h3 class="feature-title">Hard Work</h3>
+                    <p>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+
+    <section class="colored-section" id="cta">
+        <div class="container-fluid">
+            <h2 class="big-heading">Olakšajte sebi život uz HouseKeeping Servis.</h2>
+        </div>
+    </section>
+    <div style="height:30px;">
+
+    </div>
+
+    <!--Slike-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="~/images/pexels-karolina-grabowska-4239099.jpg" class="img-thumbnail float-left">
+            </div>
+            <div class="col-md-4">
+                <img src="~/images/pexels-karolina-grabowska-4239110.jpg" class="img-thumbnail mx-auto d-block">
+            </div>
+            <div class="col-md-4">
+                <img src="~/images/pexels-karolina-grabowska-4239117.jpg" class="img-thumbnail float-right">
+            </div>
+        </div>
+    </div>
+
+    <!--Utisci-->
+    <h2 style="margin-top:50px;">What our customers say</h2>
+    <div id="carouselExampleControls" class="carousel slide text-center" data-ride="carousel">
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <h4>"This company is the best. I am so happy with the result!"<br><span>Michael Roe, Vice President, Comment Box</span></h4>
+            </div>
+            <div class="carousel-item">
+                <h4>"One word... WOW!!"<br><span>John Doe, Salesman, Rep Inc</span></h4>
+            </div>
+            <div class="carousel-item">
+                <h4>"Could I... BE any more happy with this company?"<br><span>Chandler Bing, Actor, FriendsAlot</span></h4>
+            </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    <!-- Pricing -->
+
+    <section class="white-section" id="pricing">
+
+        <h2 class="section-heading">Basic price list</h2>
+        <p>Simple and affordable price plans for you.</p>
+
+        <div class="row">
+
+            <div class="pricing-column col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Stanovi</h3>
+                    </div>
+                    <div class="card-body">
+                        <h2 class="price-text">10KM/h</h2>
+                        <p>Sobe</p>
+                        <p>Prozori</p>
+                        <p>Podovi</p>
+                        <a href="/Narudzbas/Create"><button class="btn btn-lg btn-block btn-dark dugmence" type="button">REZERVIŠI</button></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pricing-column col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Zgrade</h3>
+                    </div>
+                    <div class="card-body">
+                        <h2 class="price-text">15KM/h</h2>
+                        <p>Održavanje</p>
+                        <p>Bez ugovora</p>
+                        <p>Bez naknada</p>
+                        <a href="/Narudzbas/Create"><button class="btn btn-lg btn-block btn-dark dugmence" type="button">REZERVIŠI</button></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pricing-column col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Popravke</h3>
+                    </div>
+                    <div class="card-body">
+                        <h2 class="price-text">20KM/h</h2>
+                        <p>Dijelovi nisu uključeni</p>
+                        <p>Bez skrivenih troškova</p>
+                        <p>Garancija do 2 godine</p>
+                        <a href="/Narudzbas/Create"><button class="btn btn-lg btn-block btn-dark dugmence" type="button">REZERVIŠI</button></a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="pricing-column col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Krečenje</h3>
+                    </div>
+                    <div class="card-body">
+                        <h2 class="price-text">5KM/m2</h2>
+                        <p>Čišćenje uključeno</p>
+                        <p>Brzo i efikasno</p>
+                        <p>Veliki izbor boja</p>
+                        <a href="/Narudzbas/Create"><button class="btn btn-lg btn-block btn-dark dugmence" type="button">REZERVIŠI</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <footer style="height:50px;" container-fluid text-center">
+        <a href="#myPage" title="To Top">
+            <span style="color: #8db4e5; font-size: 15px; margin-top:10px; " class="glyphicon glyphicon-chevron-up"></span>
+        </a>
+    </footer>
+    <script>
+        $(document).ready(function () {
+            // Add smooth scrolling to all links in navbar + footer link
+            $(".navbar a, footer a[href='#myPage']").on('click', function (event) {
+                // Make sure this.hash has a value before overriding default behavior
+                if (this.hash !== "") {
+                    // Prevent default anchor click behavior
+                    event.preventDefault();
+
+                    // Store hash
+                    var hash = this.hash;
+
+                    // Using jQuery's animate() method to add smooth page scroll
+                    // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+                    $('html, body').animate({
+                        scrollTop: $(hash).offset().top
+                    }, 900, function () {
+
+                        // Add hash (#) to URL when done scrolling (default click behavior)
+                        window.location.hash = hash;
+                    });
+                } // End if
+            });
+
+            $(window).scroll(function () {
+                $(".slideanim").each(function () {
+                    var pos = $(this).offset().top;
+
+                    var winTop = $(window).scrollTop();
+                    if (pos < winTop + 600) {
+                        $(this).addClass("slide");
+                    }
+                });
+            });
+        })
+    </script>
+
+</body>
+</html>
