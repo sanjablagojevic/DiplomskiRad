@@ -184,6 +184,5 @@ namespace UserManagement.MVC.Controllers
             //FileResult imageUserFile = GetFileFromBytes(user.ProfilePicture);
             //return imageUserFile;
         }
-
     }
 }
