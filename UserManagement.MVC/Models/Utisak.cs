@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -8,11 +9,15 @@ namespace UserManagement.MVC.Models
 {
     public partial class Utisak
     {
+
         public Utisak()
         {
             Kreirano = DateTime.Now;
+           
         }
         public int UtisakId { get; set; }
+
+        public String UserId { get; set; }
 
         [Column(TypeName = "decimal(18,2)")]
         public decimal Ocjena { get; set; }

@@ -14,18 +14,23 @@ namespace UserManagement.MVC.Controllers
     public class UtisaksController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-
-        public UtisaksController(ApplicationDbContext context)
+        public UtisaksController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
-
+            _userManager = userManager;
+        }
+        private async Task<ApplicationUser> GetCurrentUser()
+        {
+            return await _userManager.GetUserAsync(HttpContext.User);
         }
 
         // GET: Utisaks
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Utisak.ToListAsync());
+            var podatak = _context.Utisak.Include(u => u.User);
+            return View(await podatak.ToListAsync());
         }
 
         // GET: Utisaks/Details/5
@@ -57,8 +62,12 @@ namespace UserManagement.MVC.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("UtisakId,Ocjena,Komentar,Kreirano")] Utisak utisak)
+        public async Task<IActionResult> Create([Bind("UtisakId,UserId,Ocjena,Komentar,Kreirano")] Utisak utisak)
         {
+            var user = await GetCurrentUser();
+            string userEmail = user.Email; // Here you gets user email 
+            string userId = user.Id;
+            utisak.UserId = userId;
             if (ModelState.IsValid)
             {
                 _context.Add(utisak);
@@ -89,7 +98,7 @@ namespace UserManagement.MVC.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("UtisakId,Ocjena,Komentar,Kreirano")] Utisak utisak)
+        public async Task<IActionResult> Edit(int id, [Bind("UtisakId,UserId,Ocjena,Komentar,Kreirano")] Utisak utisak)
         {
             if (id != utisak.UtisakId)
             {
@@ -152,5 +161,29 @@ namespace UserManagement.MVC.Controllers
         {
             return _context.Utisak.Any(e => e.UtisakId == id);
         }
+
+        public FileResult GetFileFromBytes(byte[] bytesIn)
+        {
+            return File(bytesIn, "image/png");
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> GetUserImageFile()
+        {
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return File(user.ProfilePicture,"image/jpeg");
+            }
+
+            //FileResult imageUserFile = GetFileFromBytes(user.ProfilePicture);
+            //return imageUserFile;
+        }
+
     }
 }

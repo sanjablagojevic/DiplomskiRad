@@ -1,6 +1,5 @@
 ﻿@model IEnumerable<UserManagement.MVC.Models.Utisak>
 
-
 @{
     ViewData["Title"] = "Utisak";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -84,7 +83,6 @@
     }
 
     .text-header {
-        color: #518bdc;
         font-weight: bold;
         letter-spacing: 1.5px;
     }
@@ -134,12 +132,12 @@
 
     @foreach (var item in Model)
     {
-        <div class="reviews-members pt-4 pb-4">
+        <div class="reviews-members pt-4 pb-4 text-black">
             <div class="media">
-                @*<a href="#" class="mr-3 rounded-pill">@Html.DisplayFor(modelItem => item.User.ProfilePicture)</a>*@
+                <img class="mr-3 rounded-pill" src='@Url.Action("GetUserImageFile", "Utisaks")' />
                 <div class="media-body">
                     <div class="reviews-members-header">
-                        <h6 class="mb-1"><a class="text-header" href="#">@Html.DisplayFor(modelItem => item.User.FirstName) @Html.DisplayFor(modelItem => item.User.LastName)</a></h6>
+                        <h6 class="mb-1">@Html.DisplayFor(modelItem => item.User.FirstName) @Html.DisplayFor(modelItem => item.User.LastName)</h6>
                     </div>
                     <div class="reviews-members-body mt-md-3">
                         <p class="text-header">@Html.DisplayFor(modelItem => item.Komentar)</p>
