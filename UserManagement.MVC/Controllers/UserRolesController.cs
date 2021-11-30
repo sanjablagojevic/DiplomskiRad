@@ -31,10 +31,28 @@ namespace UserManagement.MVC.Controllers
                 thisViewModel.FirstName = user.FirstName;
                 thisViewModel.LastName = user.LastName;
                 thisViewModel.Roles = await GetUserRoles(user);
+                thisViewModel.isActive = user.EmailConfirmed;
                 userRolesViewModel.Add(thisViewModel);
             }
             return View(userRolesViewModel);
         }
+
+        public async Task<IActionResult> Activate(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            user.EmailConfirmed = !user.EmailConfirmed;
+
+            await _userManager.UpdateAsync(user);
+
+            return RedirectToAction(nameof(Index));
+        }
+
         public async Task<IActionResult> Manage(string userId)
         {
             ViewBag.userId = userId;

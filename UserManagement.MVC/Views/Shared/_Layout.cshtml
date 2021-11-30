@@ -33,18 +33,7 @@
                         @*<li class="nav-item">
         <a style="color: #F9F6F5 !important;" class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Početna</a>
         </li>*@
-                        @if (User.IsInRole("SuperAdmin"))
-                        {
-                            <li class="nav-item dropdown">
-                                <a style="color: #F9F6F5 !important;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Katalozi
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="Kategorijas">Kategorije</a>
-                                    <a class="dropdown-item" href="Uslugas">Usluga</a>
-                                </div>
-                            </li>
-                        }
+
                         <li class="nav-item">
                             <a style="color: #F9F6F5 !important;" class="nav-link" asp-area="" asp-controller="Utisaks" asp-action="Index">Utisak</a>
                         </li>
@@ -56,11 +45,23 @@
                         </li>
                         @if (User.IsInRole("SuperAdmin"))
                         {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="UserRoles" asp-action="Index">User Roles</a>
+                            <li class="nav-item dropdown">
+                                <a style="color: #F9F6F5 !important;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Katalozi
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="Kategorijas">Kategorije</a>
+                                    <a class="dropdown-item" href="Uslugas">Usluga</a>
+                                </div>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="RoleManager" asp-action="Index">Role Manager</a>
+                            <li class="nav-item dropdown">
+                                <a style="color: #F9F6F5 !important;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Administracija
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="UserRoles">Korisnici</a>
+                                    <a class="dropdown-item" href="RoleManager">Uloge</a>
+                                </div>
                             </li>
                         }
                         <li class="nav-item ml-auto">

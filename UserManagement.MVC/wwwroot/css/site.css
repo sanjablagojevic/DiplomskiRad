@@ -69,3 +69,14 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+.btn-facebook {
+    background-color: #3B5998;
+    color: white;
+    width: 100%;
+}
+
+.btn-google {
+    background-color: #dd4b39;
+    color: white;
+    width: 100%;
+}
