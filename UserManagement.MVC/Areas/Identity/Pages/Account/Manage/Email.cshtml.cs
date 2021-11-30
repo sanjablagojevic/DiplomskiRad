@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using UserManagement.MVC.Models;
+using System.ComponentModel;
 
 namespace UserManagement.MVC.Areas.Identity.Pages.Account.Manage
 {
@@ -30,6 +31,7 @@ namespace UserManagement.MVC.Areas.Identity.Pages.Account.Manage
             _emailSender = emailSender;
         }
 
+        [DisplayName("Korisničko ime")]
         public string Username { get; set; }
 
         public string Email { get; set; }
@@ -46,7 +48,7 @@ namespace UserManagement.MVC.Areas.Identity.Pages.Account.Manage
         {
             [Required]
             [EmailAddress]
-            [Display(Name = "New email")]
+            [Display(Name = "Novi email")]
             public string NewEmail { get; set; }
         }
 

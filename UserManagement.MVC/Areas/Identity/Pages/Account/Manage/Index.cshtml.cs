@@ -37,16 +37,16 @@ namespace UserManagement.MVC.Areas.Identity.Pages.Account.Manage
 
         public class InputModel
         {
-            [Display(Name = "First Name")]
+            [Display(Name = "Ime")]
             public string FirstName { get; set; }
-            [Display(Name = "Last Name")]
+            [Display(Name = "Prezime")]
             public string LastName { get; set; }
-            [Display(Name = "Username")]
+            [Display(Name = "Email/Korisničko ime")]
             public string Username { get; set; }
             [Phone]
-            [Display(Name = "Phone number")]
+            [Display(Name = "Broj telefona")]
             public string PhoneNumber { get; set; }
-            [Display(Name = "Profile Picture")]
+            [Display(Name = "Profilna slika")]
             public byte[] ProfilePicture { get; set; }
         }
 
@@ -154,7 +154,7 @@ namespace UserManagement.MVC.Areas.Identity.Pages.Account.Manage
                 await _userManager.UpdateAsync(user);
             }
             await _signInManager.RefreshSignInAsync(user);
-            StatusMessage = "Your profile has been updated";
+            StatusMessage = "Vaš profil je ažuriran.";
             return RedirectToPage();
         }
     }
