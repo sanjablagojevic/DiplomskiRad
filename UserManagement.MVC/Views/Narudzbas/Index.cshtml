@@ -1,0 +1,84 @@
+﻿@model IEnumerable<UserManagement.MVC.Models.Narudzba>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AdresaNarudzbe)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DatumNarudzbe)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VrijemePocetka)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VrijemeKraja)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NarudzbaPotvrdjena)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmailNarucioca)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BrojTelefonaNarucioca)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Radnik)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Usluga)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdresaNarudzbe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DatumNarudzbe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VrijemePocetka)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VrijemeKraja)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NarudzbaPotvrdjena)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailNarucioca)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BrojTelefonaNarucioca)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Radnik.RadnikId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usluga.UslugaId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.NarudzbaId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.NarudzbaId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.NarudzbaId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
