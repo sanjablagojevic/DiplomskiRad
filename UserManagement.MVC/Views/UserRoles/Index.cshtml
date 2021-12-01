@@ -1,7 +1,7 @@
 ﻿@using UserManagement.MVC.Models
 @model List<UserManagement.MVC.Models.UserRolesViewModel>
 @{ ViewData["Title"] = "Index";
-                Layout = "~/Views/Shared/_Layout.cshtml"; }
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
 
 <style>
     .form-check-input {
@@ -11,43 +11,104 @@
     #forma {
         margin-bottom: 5px;
     }
+
+    body {
+        background: #edf1f5;
+        margin-top: 20px;
+    }
+
+    .card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: #fff;
+        background-clip: border-box;
+        border: 0 solid transparent;
+        border-radius: 0;
+    }
+
+    .btn-circle.btn-lg, .btn-group-lg > .btn-circle.btn {
+        width: 50px;
+        height: 50px;
+        padding: 14px 15px;
+        font-size: 18px;
+        line-height: 23px;
+    }
+
+    .text-muted {
+        color: #8898aa !important;
+    }
+
+    [type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+        cursor: pointer;
+    }
+
+    .btn-circle {
+        border-radius: 100%;
+        width: 40px;
+        height: 40px;
+        padding: 10px;
+    }
+
+    .user-table tbody tr .category-select {
+        max-width: 150px;
+        border-radius: 20px;
+    }
+    .btn-outline-info {
+        color: #518bdc;
+        border-color: #518bdc;
+    }
 </style>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
 <div class="container">
-    <h1>Korisnici</h1>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Ime</th>
-                <th>Prezime</th>
-                <th>Email</th>
-                <th>Uloge</th>
-                <th>Aktivan</th>
-                <th>Akcije</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var user in Model)
-            {
-<tr>
-    <td>@user.FirstName</td>
-    <td>@user.LastName</td>
-    <td>@user.Email</td>
-    <td>@string.Join(" , ", user.Roles.ToList())</td>
-    <td>
-        <form id="forma" asp-action="Activate" asp-route-id="@user.UserId">
-            <label class="switch mt-auto ml-auto">
-                <input class="form-check-input mt-auto"
-                       type="checkbox" @(user.isActive ? "checked" : "")
-                       onChange="this.form.submit()">
-                <span class="slider round mt-auto"></span>
-            </label>
-        </form>
-    </td>
-    <td>
-        <a class="btn btn-primary" asp-controller="UserRoles" asp-action="Manage" asp-route-userId="@user.UserId">Izmjena uloga</a>
-    </td>
-</tr>
-}
-        </tbody>
-    </table>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title text-uppercase mb-0">Korisnici</h5>
+                </div>
+                <div class="table-responsive">
+                    <table class="table no-wrap user-table mb-0">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="border-0 text-uppercase font-medium">Ime</th>
+                                <th scope="col" class="border-0 text-uppercase font-medium">Prezime</th>
+                                <th scope="col" class="border-0 text-uppercase font-medium">Email</th>
+                                <th scope="col" class="border-0 text-uppercase font-medium">Uloge</th>
+                                <th scope="col" class="border-0 text-uppercase font-medium text-center" >Aktivan</th>
+                                <th scope="col" class="border-0 text-uppercase font-medium" >Akcije</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var user in Model)
+                            {
+                <tr>
+                    <td>@user.FirstName</td>
+                    <td>@user.LastName</td>
+                    <td>@user.Email</td>
+                    <td>@string.Join(" , ", user.Roles.ToList())</td>
+                    <td class="text-center">
+                        <form id="forma" asp-action="Activate" asp-route-id="@user.UserId">
+                            <label class="switch mt-auto ml-auto">
+                                <input class="form-check-input mt-auto"
+                                       type="checkbox" @(user.isActive ? "checked" : "")
+                                       onChange="this.form.submit()">
+                                <span class="slider round mt-auto"></span>
+                            </label>
+                        </form>
+                    </td>
+                    <td>
+                        <a type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2" asp-controller="UserRoles" asp-action="Manage" asp-route-userId="@user.UserId"><i class="fa fa-edit"></i> </a>
+                    </td>
+                </tr>}
+                        </tbody>
+                    </table>
+                </div>
+
+                </div>
+            </div>
+        </div>
 </div>
