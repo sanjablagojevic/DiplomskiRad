@@ -21,7 +21,7 @@ namespace UserManagement.MVC.Models
         [DisplayName("Adresa naručioca")]
         public string AdresaNarudzbe { get; set; }
         [DisplayName("Datum")]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy.}")]
         public DateTime DatumNarudzbe { get; set; }
         [DisplayName("Vrijeme početka")]
         [DisplayFormat(DataFormatString = "{0:HH:mm}")]
