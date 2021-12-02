@@ -50,7 +50,7 @@ namespace UserManagement.MVC.Controllers
         public IActionResult Create()
         {
             ViewData["RadnikId"] = new SelectList(_context.Radnik, "RadnikId", "RadnikId");
-            ViewData["UslugaId"] = new SelectList(_context.Usluga, "UslugaId", "UslugaId");
+            ViewData["UslugaId"] = new SelectList(_context.Usluga, nameof(Usluga.UslugaId), nameof(Usluga.NazivUsluge));
             return View();
         }
 

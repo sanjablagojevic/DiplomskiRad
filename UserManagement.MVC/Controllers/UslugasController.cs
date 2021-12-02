@@ -48,7 +48,7 @@ namespace UserManagement.MVC.Controllers
         // GET: Uslugas/Create
         public IActionResult Create()
         {
-            ViewData["KategorijaId"] = new SelectList(_context.Kategorija, "KategorijaId", "KategorijaId");
+            ViewData["KategorijaId"] = new SelectList(_context.Kategorija, nameof(Kategorija.KategorijaId), nameof(Kategorija.NazivKategorije));
             return View();
         }
 
