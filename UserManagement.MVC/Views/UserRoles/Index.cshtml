@@ -3,112 +3,212 @@
 @{ ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml"; }
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+
+
 <style>
-    .form-check-input {
-        margin-left: 0 !important;
-    }
-
-    #forma {
-        margin-bottom: 5px;
-    }
-
     body {
-        background: #edf1f5;
+        background-color: #f6f6f6;
         margin-top: 20px;
     }
 
     .card {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        min-width: 0;
-        word-wrap: break-word;
         background-color: #fff;
-        background-clip: border-box;
-        border: 0 solid transparent;
-        border-radius: 0;
+        border-radius: 10px;
+        border: none;
+        position: relative;
+        margin-bottom: 30px;
+        box-shadow: 0 0.46875rem 2.1875rem rgba(90,97,105,0.1), 0 0.9375rem 1.40625rem rgba(90,97,105,0.1), 0 0.25rem 0.53125rem rgba(90,97,105,0.12), 0 0.125rem 0.1875rem rgba(90,97,105,0.1);
     }
 
-    .btn-circle.btn-lg, .btn-group-lg > .btn-circle.btn {
-        width: 50px;
-        height: 50px;
-        padding: 14px 15px;
-        font-size: 18px;
-        line-height: 23px;
+        .card .card-header {
+            border-bottom-color: #f9f9f9;
+            line-height: 30px;
+            -ms-grid-row-align: center;
+            align-self: center;
+            width: 100%;
+            padding: 10px 25px;
+            display: flex;
+            align-items: center;
+        }
+
+        .card .card-header, .card .card-body, .card .card-footer {
+            background-color: transparent;
+            padding: 20px 25px;
+        }
+
+    .card-header:first-child {
+        border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
     }
 
-    .text-muted {
-        color: #8898aa !important;
+    .card-header {
+        padding: .75rem 1.25rem;
+        margin-bottom: 0;
+        background-color: rgba(0,0,0,.03);
+        border-bottom: 1px solid rgba(0,0,0,.125);
     }
 
-    [type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
-        cursor: pointer;
+    .table:not(.table-sm) thead th {
+        border-bottom: none;
+        background-color: #e9e9eb;
+        color: #666;
+        padding-top: 15px;
+        padding-bottom: 15px;
     }
 
-    .btn-circle {
-        border-radius: 100%;
-        width: 40px;
-        height: 40px;
-        padding: 10px;
+    .table .table-img img {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        border: 2px solid #bbbbbb;
+        -webkit-box-shadow: 5px 6px 15px 0px rgba(49,47,49,0.5);
+        -moz-box-shadow: 5px 6px 15px 0px rgba(49,47,49,0.5);
+        box-shadow: 5px 6px 15px 0px rgba(49,47,49,0.5);
+        text-shadow: 0 0 black;
     }
 
-    .user-table tbody tr .category-select {
-        max-width: 150px;
-        border-radius: 20px;
+    .table .team-member-sm {
+        width: 32px;
+        -webkit-transition: all 0.25s ease;
+        -o-transition: all 0.25s ease;
+        -moz-transition: all 0.25s ease;
+        transition: all 0.25s ease;
     }
-    .btn-outline-info {
-        color: #518bdc;
-        border-color: #518bdc;
+
+    .table .team-member {
+        position: relative;
+        width: 30px;
+        white-space: nowrap;
+        border-radius: 1000px;
+        vertical-align: bottom;
+        display: inline-block;
+    }
+
+    .table .order-list li img {
+        border: 2px solid #ffffff;
+        box-shadow: 4px 3px 6px 0 rgba(0,0,0,0.2);
+    }
+
+    .table .team-member img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        border: 0;
+        border-radius: 1000px;
+    }
+
+    .rounded-circle {
+        border-radius: 50% !important;
+    }
+
+    .table .order-list li + li {
+        margin-left: -14px;
+        background: transparent;
+    }
+
+    .avatar.avatar-sm {
+        font-size: 12px;
+        height: 30px;
+        width: 30px;
+    }
+
+    .avatar {
+        background: #6777ef;
+        border-radius: 50%;
+        color: #e3eaef;
+        display: inline-block;
+        font-size: 16px;
+        font-weight: 300;
+        margin: 0;
+        position: relative;
+        vertical-align: middle;
+        line-height: 1.28;
+        height: 45px;
+        width: 45px;
+    }
+
+    .table .order-list li .badge {
+        background: rgba(228,222,222,0.8);
+        color: #6b6f82;
+        margin-bottom: 6px;
+    }
+
+    .badge {
+        vertical-align: middle;
+        padding: 7px 12px;
+        font-weight: 600;
+        letter-spacing: 0.3px;
+        border-radius: 30px;
+        font-size: 12px;
+    }
+
+    .progress-bar {
+        display: -ms-flexbox;
+        display: -webkit-box;
+        display: flex;
+        -ms-flex-direction: column;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        flex-direction: column;
+        -ms-flex-pack: center;
+        -webkit-box-pack: center;
+        justify-content: center;
+        overflow: hidden;
+        color: #fff;
+        text-align: center;
+        white-space: nowrap;
+        background-color: #007bff;
+        -webkit-transition: width .6s ease;
+        transition: width .6s ease;
     }
 </style>
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-
 <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title text-uppercase mb-0">Korisnici</h5>
-                </div>
+    <div class="col-md-12 col-12 col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title text-uppercase mb-0">Korisnici</h4>
+            </div>
+            <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table no-wrap user-table mb-0">
-                        <thead>
+                    <table class="table table-striped">
+                        <thead class="text-center">
                             <tr>
                                 <th scope="col" class="border-0 text-uppercase font-medium">Ime</th>
                                 <th scope="col" class="border-0 text-uppercase font-medium">Prezime</th>
                                 <th scope="col" class="border-0 text-uppercase font-medium">Email</th>
                                 <th scope="col" class="border-0 text-uppercase font-medium">Uloge</th>
-                                <th scope="col" class="border-0 text-uppercase font-medium text-center" >Aktivan</th>
-                                <th scope="col" class="border-0 text-uppercase font-medium" >Akcije</th>
+                                <th scope="col" class="border-0 text-uppercase font-medium text-center">Aktivan</th>
+                                <th scope="col" class="border-0 text-uppercase font-medium">Akcije</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="text-center">
                             @foreach (var user in Model)
                             {
-                <tr>
-                    <td>@user.FirstName</td>
-                    <td>@user.LastName</td>
-                    <td>@user.Email</td>
-                    <td>@string.Join(" , ", user.Roles.ToList())</td>
-                    <td class="text-center">
-                        <form id="forma" asp-action="Activate" asp-route-id="@user.UserId">
-                            <label class="switch mt-auto ml-auto">
-                                <input class="form-check-input mt-auto"
-                                       type="checkbox" @(user.isActive ? "checked" : "")
-                                       onChange="this.form.submit()">
-                                <span class="slider round mt-auto"></span>
-                            </label>
-                        </form>
-                    </td>
-                    <td>
-                        <a type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2" asp-controller="UserRoles" asp-action="Manage" asp-route-userId="@user.UserId"><i class="fa fa-edit"></i> </a>
-                    </td>
-                </tr>}
+                                <tr class="text-center">
+                                    <td>@user.FirstName</td>
+                                    <td>@user.LastName</td>
+                                    <td>@user.Email</td>
+                                    <td>@string.Join(" , ", user.Roles.ToList())</td>
+                                    <td>
+                                        <form id="forma" asp-action="Activate" asp-route-id="@user.UserId">
+                                            <label class="switch mt-auto ml-auto">
+                                                <input class="form-check-input mt-auto"
+                                                       type="checkbox" @(user.isActive ? "checked" : "")
+                                                       onChange="this.form.submit()">
+                                                <span class="slider round mt-auto"></span>
+                                            </label>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <a type="button" class="ml-2" asp-controller="UserRoles" asp-action="Manage" asp-route-userId="@user.UserId"><i class="fa fa-edit"></i> </a>
+                                    </td>
+                                </tr>
+}
                         </tbody>
                     </table>
                 </div>
 
-                </div>
             </div>
         </div>
+    </div>
 </div>
