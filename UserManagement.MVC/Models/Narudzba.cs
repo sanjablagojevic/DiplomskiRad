@@ -17,6 +17,8 @@ namespace UserManagement.MVC.Models
         public int NarudzbaId { get; set; }
         [DisplayName("Usluga")]
         public int? UslugaId { get; set; }
+
+        [DisplayName("Radnik")]
         public int? RadnikId { get; set; }
         [DisplayName("Adresa naručioca")]
         public string AdresaNarudzbe { get; set; }

@@ -162,5 +162,12 @@ namespace UserManagement.MVC.Controllers
         {
             return _context.Narudzba.Any(e => e.NarudzbaId == id);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> PotvrdjeneNarudzbe()
+        {
+            var potvrdjenjeNarudzbe = _context.Narudzba.Include(n => n.Radnik).Include(n => n.Usluga).Where(m => m.NarudzbaPotvrdjena==true);
+            return View(await potvrdjenjeNarudzbe.ToListAsync());
+        }
     }
 }
