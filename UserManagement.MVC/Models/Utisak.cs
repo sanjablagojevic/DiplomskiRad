@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
@@ -19,8 +20,11 @@ namespace UserManagement.MVC.Models
 
         public String UserId { get; set; }
 
+        [DisplayName("Ocjena")]
         [Column(TypeName = "decimal(18,2)")]
         public decimal Ocjena { get; set; }
+
+        [DisplayName("Komentar")]
         public string Komentar { get; set; }
         public DateTime? Kreirano { get; set; }
 
