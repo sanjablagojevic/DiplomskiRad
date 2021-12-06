@@ -115,6 +115,9 @@
         border-radius: 50rem !important;
     }
 </style>
+
+<div id="PlaceHolderHere"></div>
+
 <section class="section-medium section-arrow--bottom-center section-arrow-primary-color bg-primary">
     <div class="container">
         <div class="row">
@@ -165,10 +168,6 @@
                     <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
                 </span>*@
         </div>
-        <form>
-            <div class="form-group">
-                <a asp-action="Create"><input class="btn btn-primary btn-sm dugmence" type="button" value="Dodaj utisak" /></a>
-            </div>
-        </form>
+                <button type="button" class="btn btn-primary" data-toggle="ajax-modal" data-target="#addUtisak" data-url="@Url.Action("Create")">Dodaj utisak</button>
     </div>
 </div>

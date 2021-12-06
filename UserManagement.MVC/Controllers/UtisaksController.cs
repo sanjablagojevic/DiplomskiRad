@@ -51,10 +51,11 @@ namespace UserManagement.MVC.Controllers
             return View(utisak);
         }
 
-        // GET: Utisaks/Create
+        [HttpGet]
         public IActionResult Create()
         {
-            return View();
+            Utisak utisak = new Utisak();
+            return PartialView("_UtisakModalPartial",utisak);
         }
 
         // POST: Utisaks/Create
@@ -74,7 +75,7 @@ namespace UserManagement.MVC.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(utisak);
+            return PartialView("_UtisakModalPartial",utisak);
         }
 
         // GET: Utisaks/Edit/5
