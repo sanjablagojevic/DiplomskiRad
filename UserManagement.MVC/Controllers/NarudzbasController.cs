@@ -22,7 +22,7 @@ namespace UserManagement.MVC.Controllers
         // GET: Narudzbas
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Narudzba.Include(n => n.Radnik).Include(n => n.Usluga);
+            var applicationDbContext = _context.Narudzba.Include(n => n.User).Include(n => n.Usluga);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -35,7 +35,7 @@ namespace UserManagement.MVC.Controllers
             }
 
             var narudzba = await _context.Narudzba
-                .Include(n => n.Radnik)
+                .Include(n => n.User)
                 .Include(n => n.Usluga)
                 .FirstOrDefaultAsync(m => m.NarudzbaId == id);
             if (narudzba == null)
@@ -49,7 +49,6 @@ namespace UserManagement.MVC.Controllers
         // GET: Narudzbas/Create
         public IActionResult Create()
         {
-            ViewData["RadnikId"] = new SelectList(_context.Radnik, "RadnikId", "RadnikId");
             ViewData["UslugaId"] = new SelectList(_context.Usluga, nameof(Usluga.UslugaId), nameof(Usluga.NazivUsluge));
             return View();
         }
@@ -59,7 +58,7 @@ namespace UserManagement.MVC.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("NarudzbaId,UslugaId,RadnikId,AdresaNarudzbe,DatumNarudzbe,VrijemePocetka,VrijemeKraja,NarudzbaPotvrdjena,EmailNarucioca,BrojTelefonaNarucioca")] Narudzba narudzba)
+        public async Task<IActionResult> Create([Bind("NarudzbaId,UslugaId,UserId,AdresaNarudzbe,DatumNarudzbe,VrijemePocetka,VrijemeKraja,NarudzbaPotvrdjena,EmailNarucioca,BrojTelefonaNarucioca")] Narudzba narudzba)
         {
             if (ModelState.IsValid)
             {
@@ -67,7 +66,7 @@ namespace UserManagement.MVC.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["RadnikId"] = new SelectList(_context.Radnik, "RadnikId", "RadnikId", narudzba.RadnikId);
+            ViewData["UserId"] = new SelectList(_context.Users, "UserId", "UserId", narudzba.UserId);
             ViewData["UslugaId"] = new SelectList(_context.Usluga, "UslugaId", "UslugaId", narudzba.UslugaId);
             return View(narudzba);
         }
@@ -85,7 +84,7 @@ namespace UserManagement.MVC.Controllers
             {
                 return NotFound();
             }
-            ViewData["RadnikId"] = new SelectList(_context.Radnik, "RadnikId", "RadnikId", narudzba.RadnikId);
+            ViewData["UserId"] = new SelectList(_context.Users, "UserId", "UserId", narudzba.UserId);
             ViewData["UslugaId"] = new SelectList(_context.Usluga, "UslugaId", "UslugaId", narudzba.UslugaId);
             return View(narudzba);
         }
@@ -95,7 +94,7 @@ namespace UserManagement.MVC.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("NarudzbaId,UslugaId,RadnikId,AdresaNarudzbe,DatumNarudzbe,VrijemePocetka,VrijemeKraja,NarudzbaPotvrdjena,EmailNarucioca,BrojTelefonaNarucioca")] Narudzba narudzba)
+        public async Task<IActionResult> Edit(int id, [Bind("NarudzbaId,UslugaId,UserId,AdresaNarudzbe,DatumNarudzbe,VrijemePocetka,VrijemeKraja,NarudzbaPotvrdjena,EmailNarucioca,BrojTelefonaNarucioca")] Narudzba narudzba)
         {
             if (id != narudzba.NarudzbaId)
             {
@@ -122,7 +121,7 @@ namespace UserManagement.MVC.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["RadnikId"] = new SelectList(_context.Radnik, "RadnikId", "RadnikId", narudzba.RadnikId);
+            ViewData["UserId"] = new SelectList(_context.Users, "UserId", "UserId", narudzba.UserId);
             ViewData["UslugaId"] = new SelectList(_context.Usluga, "UslugaId", "UslugaId", narudzba.UslugaId);
             return View(narudzba);
         }
@@ -136,7 +135,7 @@ namespace UserManagement.MVC.Controllers
             }
 
             var narudzba = await _context.Narudzba
-                .Include(n => n.Radnik)
+                .Include(n => n.User)
                 .Include(n => n.Usluga)
                 .FirstOrDefaultAsync(m => m.NarudzbaId == id);
             if (narudzba == null)
@@ -166,7 +165,7 @@ namespace UserManagement.MVC.Controllers
         [HttpGet]
         public async Task<IActionResult> PotvrdjeneNarudzbe()
         {
-            var potvrdjenjeNarudzbe = _context.Narudzba.Include(n => n.Radnik).Include(n => n.Usluga).Where(m => m.NarudzbaPotvrdjena==true);
+            var potvrdjenjeNarudzbe = _context.Narudzba.Include(n => n.User).Include(n => n.Usluga).Where(m => m.NarudzbaPotvrdjena==true);
             return View(await potvrdjenjeNarudzbe.ToListAsync());
         }
     }

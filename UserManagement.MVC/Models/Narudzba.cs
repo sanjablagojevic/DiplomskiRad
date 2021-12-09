@@ -19,7 +19,7 @@ namespace UserManagement.MVC.Models
         public int? UslugaId { get; set; }
 
         [DisplayName("Radnik")]
-        public int? RadnikId { get; set; }
+        public int? UserId { get; set; }
         [DisplayName("Adresa naručioca")]
         public string AdresaNarudzbe { get; set; }
         [DisplayName("Datum")]
@@ -34,7 +34,7 @@ namespace UserManagement.MVC.Models
         public string EmailNarucioca { get; set; }
         public string BrojTelefonaNarucioca { get; set; }
 
-        public virtual Radnik Radnik { get; set; }
+        public virtual ApplicationUser User { get; set; }
         [DisplayName("Usluga")]
         public virtual Usluga Usluga { get; set; }
         public virtual ICollection<Placanje> Placanje { get; set; }
