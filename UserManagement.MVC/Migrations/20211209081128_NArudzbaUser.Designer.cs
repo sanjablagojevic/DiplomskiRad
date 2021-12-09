@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UserManagement.MVC.Data;
 
 namespace UserManagement.MVC.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211209081128_NArudzbaUser")]
+    partial class NArudzbaUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -279,7 +281,13 @@ namespace UserManagement.MVC.Migrations
                     b.Property<bool?>("NarudzbaPotvrdjena")
                         .HasColumnType("bit");
 
-                    b.Property<string>("UserId")
+                    b.Property<int?>("RadnikId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId1")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int?>("UslugaId")
@@ -293,7 +301,9 @@ namespace UserManagement.MVC.Migrations
 
                     b.HasKey("NarudzbaId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("RadnikId");
+
+                    b.HasIndex("UserId1");
 
                     b.HasIndex("UslugaId");
 
@@ -332,6 +342,30 @@ namespace UserManagement.MVC.Migrations
                     b.HasIndex("NarudzbaId");
 
                     b.ToTable("Placanje");
+                });
+
+            modelBuilder.Entity("UserManagement.MVC.Models.Radnik", b =>
+                {
+                    b.Property<int>("RadnikId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("BrojTelefonaRadnika")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EmailRadnika")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImePrezimeRadnika")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal?>("PlataRadnika")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("RadnikId");
+
+                    b.ToTable("Radnik");
                 });
 
             modelBuilder.Entity("UserManagement.MVC.Models.Usluga", b =>
@@ -436,9 +470,13 @@ namespace UserManagement.MVC.Migrations
 
             modelBuilder.Entity("UserManagement.MVC.Models.Narudzba", b =>
                 {
+                    b.HasOne("UserManagement.MVC.Models.Radnik", null)
+                        .WithMany("Narudzba")
+                        .HasForeignKey("RadnikId");
+
                     b.HasOne("UserManagement.MVC.Models.ApplicationUser", "User")
                         .WithMany()
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId1");
 
                     b.HasOne("UserManagement.MVC.Models.Usluga", "Usluga")
                         .WithMany("Narudzba")
