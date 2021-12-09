@@ -24,7 +24,6 @@
         .card .card-header {
             border-bottom-color: #f9f9f9;
             line-height: 30px;
-            -ms-grid-row-align: center;
             align-self: center;
             width: 100%;
             padding: 10px 25px;
@@ -207,10 +206,6 @@
                         <thead class="text-center">
                             <tr>
                                 <th class="text-center">
-                                    @*<div class="custom-checkbox custom-checkbox-table custom-control">
-                                        <input type="checkbox" data-checkboxes="mygroup" data-checkbox-role="dad" class="custom-control-input" id="checkbox-all">
-                                        <label for="checkbox-all" class="custom-control-label">&nbsp;</label>
-                                    </div>*@
                                 </th>
                                 <th>Adresa narudžbe</th>
                                 <th>Datum narudžbe</th>
@@ -238,10 +233,8 @@
                                     @Html.DisplayFor(modelItem => item.Usluga.NazivUsluge)
                                 </td>
                                 <td>
-                                    <a asp-action="Edit" asp-route-id="@item.NarudzbaId">Dodaj radnika</a> |
-                                    @*<a asp-action="Details" asp-route-id="@item.NarudzbaId">Details</a> |
-                                    <a asp-action="Delete" asp-route-id="@item.NarudzbaId">Delete</a>
-                                </td>*@
+                                    <a asp-action="Edit" asp-route-id="@item.NarudzbaId">Potvrdi</a>
+                                </td>
                             </tr>
                             }
                             </tbody>

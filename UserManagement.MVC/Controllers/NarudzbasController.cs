@@ -66,7 +66,7 @@ namespace UserManagement.MVC.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["UserId"] = new SelectList(_context.Users, "UserId", "UserId", narudzba.UserId);
+            //ViewData["UserId"] = new SelectList(_context.Users, "UserId", "UserId", narudzba.UserId);
             ViewData["UslugaId"] = new SelectList(_context.Usluga, "UslugaId", "UslugaId", narudzba.UslugaId);
             return View(narudzba);
         }
@@ -84,7 +84,7 @@ namespace UserManagement.MVC.Controllers
             {
                 return NotFound();
             }
-            ViewData["UserId"] = new SelectList(_context.Users, "UserId", "UserId", narudzba.UserId);
+            //ViewData["UserId"] = new SelectList(_context.Users, "UserId", "UserId", narudzba.UserId);
             ViewData["UslugaId"] = new SelectList(_context.Usluga, "UslugaId", "UslugaId", narudzba.UslugaId);
             return View(narudzba);
         }
@@ -121,7 +121,7 @@ namespace UserManagement.MVC.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["UserId"] = new SelectList(_context.Users, "UserId", "UserId", narudzba.UserId);
+            //ViewData["UserId"] = new SelectList(_context.Users, "UserId", "UserId", narudzba.UserId);
             ViewData["UslugaId"] = new SelectList(_context.Usluga, "UslugaId", "UslugaId", narudzba.UslugaId);
             return View(narudzba);
         }
