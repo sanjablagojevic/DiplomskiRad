@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -13,16 +14,21 @@ namespace UserManagement.MVC.Controllers
     public class NarudzbasController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public NarudzbasController(ApplicationDbContext context)
+        public NarudzbasController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
-
+        private async Task<ApplicationUser> GetCurrentUser()
+        {
+            return await _userManager.GetUserAsync(HttpContext.User);
+        }
         // GET: Narudzbas
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Narudzba.Include(n => n.User).Include(n => n.Usluga);
+            var applicationDbContext = _context.Narudzba.Include(n => n.User).Include(n => n.Usluga).Where(n => n.NarudzbaPotvrdjena != true);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -96,6 +102,12 @@ namespace UserManagement.MVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("NarudzbaId,UslugaId,UserId,AdresaNarudzbe,DatumNarudzbe,VrijemePocetka,VrijemeKraja,NarudzbaPotvrdjena,EmailNarucioca,BrojTelefonaNarucioca")] Narudzba narudzba)
         {
+            var user = await GetCurrentUser();
+            string userEmail = user.Email; // Here you gets user email 
+            string userId = user.Id;
+            narudzba.UserId = userId;
+            narudzba.NarudzbaPotvrdjena = true;
+            
             if (id != narudzba.NarudzbaId)
             {
                 return NotFound();

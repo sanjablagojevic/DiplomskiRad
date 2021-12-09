@@ -216,6 +216,7 @@
                                 <th>Datum narudžbe</th>
                                 <th>Vrijeme početka</th>
                                 <th>Usluga</th>
+                                <th>Radnik</th>
                             </tr>
                         </thead>
                         <tbody class="text-center">
@@ -223,7 +224,7 @@
                             {
                                 <tr>
                                     <td class="text-center">
-                                        @Html.DisplayFor(modelItem => item.NarudzbaId)
+                                        @*@Html.DisplayFor(modelItem => item.NarudzbaId)*@
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.AdresaNarudzbe)
@@ -236,6 +237,9 @@
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Usluga.NazivUsluge)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.User.FirstName) @Html.DisplayFor(modelItem => item.User.LastName)
                                     </td>
                                     @*<td>
                                         <a asp-action="Edit" asp-route-id="@item.NarudzbaId">Dodaj radnika</a> |*@
