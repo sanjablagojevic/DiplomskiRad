@@ -70,7 +70,7 @@ namespace UserManagement.MVC.Controllers
             {
                 _context.Add(narudzba);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Home", new { area = "" });
             }
             //ViewData["UserId"] = new SelectList(_context.Users, "UserId", "UserId", narudzba.UserId);
             ViewData["UslugaId"] = new SelectList(_context.Usluga, "UslugaId", "UslugaId", narudzba.UslugaId);
