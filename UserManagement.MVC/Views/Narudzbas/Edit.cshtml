@@ -14,7 +14,7 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="NarudzbaId" />
-            <div class="form-group">
+            @*<div class="form-group">
                 <label asp-for="UslugaId" class="control-label"></label>
                 <select asp-for="UslugaId" class="form-control" asp-items="ViewBag.UslugaId"></select>
                 <span asp-validation-for="UslugaId" class="text-danger"></span>
@@ -38,13 +38,13 @@
                 <label asp-for="VrijemePocetka" class="control-label"></label>
                 <input asp-for="VrijemePocetka" class="form-control" />
                 <span asp-validation-for="VrijemePocetka" class="text-danger"></span>
-            </div>
-            <div class="form-group">
+            </div>*@
+            @*<div class="form-group">
                 <label asp-for="VrijemeKraja" class="control-label"></label>
                 <input asp-for="VrijemeKraja" class="form-control" />
                 <span asp-validation-for="VrijemeKraja" class="text-danger"></span>
-            </div>
-            <div class="form-group">
+            </div>*@
+            @*<div class="form-group">
                 <label asp-for="NarudzbaPotvrdjena" class="control-label"></label>
                 <input asp-for="NarudzbaPotvrdjena" class="form-control" />
                 <span asp-validation-for="NarudzbaPotvrdjena" class="text-danger"></span>
@@ -58,9 +58,9 @@
                 <label asp-for="BrojTelefonaNarucioca" class="control-label"></label>
                 <input asp-for="BrojTelefonaNarucioca" class="form-control" />
                 <span asp-validation-for="BrojTelefonaNarucioca" class="text-danger"></span>
-            </div>
+            </div>*@
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Sačuvaj" class="btn btn-primary" />
             </div>
         </form>
     </div>
