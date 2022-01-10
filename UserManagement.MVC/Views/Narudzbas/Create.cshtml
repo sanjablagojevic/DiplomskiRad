@@ -43,11 +43,11 @@
                     <input asp-for="VrijemeKraja" class="form-control" />
                     <span asp-validation-for="VrijemeKraja" class="text-danger"></span>
                 </div>*@
-                <div class="form-group">
+                @*<div class="form-group">
                     <label asp-for="NarudzbaPotvrdjena" class="control-label"></label>
                     <input asp-for="NarudzbaPotvrdjena" class="form-control" />
                     <span asp-validation-for="NarudzbaPotvrdjena" class="text-danger"></span>
-                </div>
+                </div>*@
                 <div class="form-group">
                     <label asp-for="EmailNarucioca" class="control-label"></label>
                     <input asp-for="EmailNarucioca" class="form-control" />
@@ -59,13 +59,9 @@
                     <span asp-validation-for="BrojTelefonaNarucioca" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-primary" />
+                    <input type="submit" value="Naruči" class="btn btn-primary" />
                 </div>
             </form>
-
-    <div>
-        <a asp-action="Index">Back to List</a>
-    </div>
 </div>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
