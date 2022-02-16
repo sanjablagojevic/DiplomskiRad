@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -179,6 +180,15 @@ namespace UserManagement.MVC.Controllers
         {
             var potvrdjenjeNarudzbe = _context.Narudzba.Include(n => n.User).Include(n => n.Usluga).Where(m => m.NarudzbaPotvrdjena==true);
             return View(await potvrdjenjeNarudzbe.ToListAsync());
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> MojeNarudzbe()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            var mojeNarudzbe = _context.Narudzba.Include(n => n.User).Include(n => n.Usluga).Where(m => m.NarudzbaPotvrdjena == true).Where(x => x.UserId == userId);
+            return View(await mojeNarudzbe.ToListAsync());
         }
     }
 }
