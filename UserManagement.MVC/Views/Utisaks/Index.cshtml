@@ -116,8 +116,6 @@
     }
 </style>
 
-<div id="PlaceHolderHere"></div>
-
 <section class="section-medium section-arrow--bottom-center section-arrow-primary-color bg-primary">
     <div class="container">
         <div class="row">
@@ -177,6 +175,7 @@
     </div>
     @if (User.Identity.IsAuthenticated)
     {
+        <div id="PlaceHolderHere"></div>
         <button type="button" class="btn btn-primary" data-toggle="ajax-modal" data-target="#addUtisak" data-url="@Url.Action("Create")">Dodaj utisak</button>
     }
 </div>

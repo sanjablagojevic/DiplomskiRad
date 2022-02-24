@@ -10,7 +10,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form asp-action="Create">
+                <form asp-controller="Utisaks" asp-action="Create" method="post">
                     <div class="form-group">
                         <label asp-for="Ocjena"></label>
                         <input asp-for="Ocjena" class="form-control" />

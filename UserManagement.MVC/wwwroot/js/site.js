@@ -17,6 +17,7 @@ $(function () {
     })
 
     PlaceHolderElement.on('click', '[data-save="modal"]', function (event) {
+        event.preventDefault();
 
         var form = $(this).parents('.modal').find('form');
         var actionUrl = form.attr('asp-action');
