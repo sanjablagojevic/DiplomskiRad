@@ -61,9 +61,7 @@ namespace UserManagement.MVC.Controllers
             return View();
         }
 
-        // POST: Narudzbas/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("NarudzbaId,UslugaId,UserId,AdresaNarudzbe,DatumNarudzbe,VrijemePocetka,VrijemeKraja,NarudzbaPotvrdjena,EmailNarucioca,BrojTelefonaNarucioca")] Narudzba narudzba)
@@ -97,15 +95,26 @@ namespace UserManagement.MVC.Controllers
             return View(narudzba);
         }
 
-        // POST: Narudzbas/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        public async Task<ActionResult> PotvrdiNarudzbu(int id)
+        {
+            var user = await GetCurrentUser();
+            string userId = user.Id;
+            var narudzba = await _context.Narudzba.FindAsync(id);
+            narudzba.UserId = userId;
+            narudzba.NarudzbaPotvrdjena = true;
+            _context.Update(narudzba);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("PotvrdjeneNarudzbe","Narudzbas");
+        }
+
+
+            [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("NarudzbaId,UslugaId,UserId,AdresaNarudzbe,DatumNarudzbe,VrijemePocetka,VrijemeKraja,NarudzbaPotvrdjena,EmailNarucioca,BrojTelefonaNarucioca")] Narudzba narudzba)
         {
             var user = await GetCurrentUser();
-            string userEmail = user.Email; // Here you gets user email 
+            string userEmail = user.Email; 
             string userId = user.Id;
             narudzba.UserId = userId;
             narudzba.NarudzbaPotvrdjena = true;
@@ -133,7 +142,7 @@ namespace UserManagement.MVC.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("PotvrdjeneNarudzbe", "Narudzbas");
             }
             //ViewData["UserId"] = new SelectList(_context.Users, "UserId", "UserId", narudzba.UserId);
             ViewData["UslugaId"] = new SelectList(_context.Usluga, "UslugaId", "UslugaId", narudzba.UslugaId);
