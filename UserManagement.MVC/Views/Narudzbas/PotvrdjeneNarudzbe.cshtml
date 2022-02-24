@@ -227,36 +227,35 @@
                                 <th>Vrijeme početka</th>
                                 <th>Usluga</th>
                                 <th>Radnik</th>
+                                <th>Pošalji mejl potvrde</th>
                             </tr>
                         </thead>
                         <tbody class="text-center">
                             @foreach (var item in Model)
                             {
-                                <tr>
-                                    <td class="text-center">
-                                        @*@Html.DisplayFor(modelItem => item.NarudzbaId)*@
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.AdresaNarudzbe)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.DatumNarudzbe)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.VrijemePocetka)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Usluga.NazivUsluge)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.User.FirstName) @Html.DisplayFor(modelItem => item.User.LastName)
-                                    </td>
-                                    @*<td>
-                                        <a asp-action="Edit" asp-route-id="@item.NarudzbaId">Dodaj radnika</a> |*@
-                                        @*<a asp-action="Details" asp-route-id="@item.NarudzbaId">Details</a> |
-                                                <a asp-action="Delete" asp-route-id="@item.NarudzbaId">Delete</a>
-                                            </td>*@
-                                </tr>
+                            <tr>
+                                <td class="text-center">
+                                    @*@Html.DisplayFor(modelItem => item.NarudzbaId)*@
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.AdresaNarudzbe)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DatumNarudzbe)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.VrijemePocetka)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Usluga.NazivUsluge)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.User.FirstName) @Html.DisplayFor(modelItem => item.User.LastName)
+                                </td>
+                                <td>
+                                    <a asp-action="MejlPotvrde" asp-route-id="@item.NarudzbaId">Pošalji</a>
+                                </td>
+                            </tr>
                             }
                         </tbody>
                     </table>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
@@ -189,6 +190,29 @@ namespace UserManagement.MVC.Controllers
 
             var mojeNarudzbe = _context.Narudzba.Include(n => n.User).Include(n => n.Usluga).Where(m => m.NarudzbaPotvrdjena == true).Where(x => x.UserId == userId);
             return View(await mojeNarudzbe.ToListAsync());
+        }
+        public async Task<ActionResult> MejlPotvrde(int? id)
+        {
+            Narudzba narudzba = await _context.Narudzba.FindAsync(id);
+            string subject = "HouseKeeping Service";
+            string body = "Ovim mejlom potvrđujemo Vašu narudžbu na dan: " + narudzba.DatumNarudzbe.ToString("dd.MM.yyyy.") + " u vrijeme: " + narudzba.VrijemePocetka?.ToString("HH:mm")+ ". ";
+            string to = narudzba.EmailNarucioca;
+            MailMessage mm = new MailMessage();
+            mm.To.Add(to);
+            mm.Subject = subject;
+            mm.Body = body;
+            mm.From = new MailAddress("sanjab2801@gmail.com");
+            mm.IsBodyHtml = false;
+
+            SmtpClient smtp = new SmtpClient("smtp.gmail.com");
+            smtp.Port = 587;
+            smtp.UseDefaultCredentials = true;
+            smtp.EnableSsl = true;
+            smtp.Credentials = new System.Net.NetworkCredential("sanjab2801@gmail.com", "harizma2801");
+            smtp.Send(mm);
+            ViewBag.message = "This Mail Has Been Sent To " + to + " Successfully...!";
+            return RedirectToAction("Index", "Home");
+
         }
     }
 }
