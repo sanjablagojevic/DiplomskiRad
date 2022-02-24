@@ -22,20 +22,24 @@ namespace UserManagement.MVC.Models
         public String UserId { get; set; }
 
         [DisplayName("Adresa naručioca")]
+        [Required]
         public string AdresaNarudzbe { get; set; }
 
         [DisplayName("Datum")]
         [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy.}")]
+        [Required]
         public DateTime DatumNarudzbe { get; set; }
 
         [DisplayName("Vrijeme početka")]
         [DisplayFormat(DataFormatString = "{0:HH:mm}")]
+        [Required]
         public DateTime? VrijemePocetka { get; set; }
 
         [DisplayName("Vrijeme kraja")]
         public DateTime? VrijemeKraja { get; set; }
         public bool? NarudzbaPotvrdjena { get; set; }
         [DisplayName("Email naručioca")]
+        [Required]
         public string EmailNarucioca { get; set; }
         [DisplayName("Broj telefona naručioca")]
         public string BrojTelefonaNarucioca { get; set; }
