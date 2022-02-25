@@ -35,10 +35,10 @@
         </li>*@
 
                         <li class="nav-item">
-                            <a style="color: #F9F6F5 !important;" class="nav-link" asp-area="" asp-controller="Utisaks" asp-action="Index">Utisak</a>
+                            <a style="color: #F9F6F5 !important;" class="nav-link" asp-area="" asp-controller="Utisaks" asp-action="Index">Reviews</a>
                         </li>
                         <li class="nav-item">
-                            <a style="color: #F9F6F5 !important;" class="nav-link" asp-area="" asp-controller="Home" asp-action="Contact">Kontakt</a>
+                            <a style="color: #F9F6F5 !important;" class="nav-link" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
                         </li>
                         <li class="nav-item">
                             <a style="color: #F9F6F5 !important;" class="nav-link" asp-area="" asp-controller="Home" asp-action="FAQ">FAQ</a>
@@ -46,43 +46,43 @@
                         @if (User.IsInRole("Radnik"))
                         {
                             <li class="nav-item">
-                                <a style="color: #F9F6F5 !important;" class="nav-link" asp-area="" asp-controller="Narudzbas" asp-action="Index">Pridošle narudžbe</a>
+                                <a style="color: #F9F6F5 !important;" class="nav-link" asp-area="" asp-controller="Narudzbas" asp-action="Index">Bookings</a>
                             </li>
                         }
                         else if (User.IsInRole("SuperAdmin"))
                         {
                             <li class="nav-item">
-                                <a style="color: #F9F6F5 !important;" class="nav-link" asp-area="" asp-controller="Narudzbas" asp-action="Index">Pridošle narudžbe</a>
+                                <a style="color: #F9F6F5 !important;" class="nav-link" asp-area="" asp-controller="Narudzbas" asp-action="Index">Bookings</a>
                             </li>
                             <li class="nav-item">
-                                <a style="color: #F9F6F5 !important;" class="nav-link" asp-area="" asp-controller="Narudzbas" asp-action="PotvrdjeneNarudzbe">Potvrđene narudžbe</a>
+                                <a style="color: #F9F6F5 !important;" class="nav-link" asp-area="" asp-controller="Narudzbas" asp-action="PotvrdjeneNarudzbe">Confirmed bookings</a>
                             </li>
                         }
                         @if (User.IsInRole("SuperAdmin"))
                         {
                             <li class="nav-item dropdown">
                                 <a style="color: #F9F6F5 !important;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Katalozi
+                                    Catalogs
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="Kategorijas">Kategorije</a>
-                                    <a class="dropdown-item" href="Uslugas">Usluga</a>
+                                    <a class="dropdown-item" href="Kategorijas">Categories</a>
+                                    <a class="dropdown-item" href="Uslugas">Services</a>
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
                                 <a style="color: #F9F6F5 !important;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Administracija
+                                    Administration
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="UserRoles">Korisnici</a>
-                                    <a class="dropdown-item" href="RoleManager">Uloge</a>
+                                    <a class="dropdown-item" href="UserRoles">Users</a>
+                                    <a class="dropdown-item" href="RoleManager">Roles</a>
                                 </div>
                             </li>
                         }
                         @if (User.IsInRole("Basic"))
                         {
                             <li class="nav-item">
-                                <a style="color: #F9F6F5 !important;" class="nav-link" asp-area="" asp-controller="Narudzbas" asp-action="MojeNarudzbe">Istorija narudžbi</a>
+                                <a style="color: #F9F6F5 !important;" class="nav-link" asp-area="" asp-controller="Narudzbas" asp-action="MojeNarudzbe">Past bookings</a>
                             </li>
                         }
                             <li class="nav-item ml-auto">
@@ -101,7 +101,7 @@
 
     <footer class="footer text-center text-lg-start" id="footer">
         <div class="container">
-            <p style="color: #F9F6F5 !important">© Copyright 2021 - Sanja Blagojević - <a style="color: #F9F6F5 !important" asp-area="" asp-controller="Home" asp-action="Privacy">O projektu</a></p>
+            <p style="color: #F9F6F5 !important">© Copyright 2021 - Sanja Blagojević - <a style="color: #F9F6F5 !important" asp-area="" asp-controller="Home" asp-action="Privacy">About</a></p>
         </div>
     </footer>
 

@@ -161,7 +161,7 @@
     }
     else
     {
-        <h4>In order to leave a review you need to <a href="Identity/Account/Login">login in</a>!</h4>
+        <h4>In order to leave a review you need to <a href="Identity/Account/Login">login</a>!</h4>
     }
 
     <div class="mb-4">
@@ -176,7 +176,7 @@
     @if (User.Identity.IsAuthenticated)
     {
         <div id="PlaceHolderHere"></div>
-        <button type="button" class="btn btn-primary" data-toggle="ajax-modal" data-target="#addUtisak" data-url="@Url.Action("Create")">Dodaj utisak</button>
+        <button type="button" class="btn btn-primary" data-toggle="ajax-modal" data-target="#addUtisak" data-url="@Url.Action("Create")">Add review</button>
     }
 </div>
 </div>
