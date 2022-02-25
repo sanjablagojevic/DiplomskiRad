@@ -15,7 +15,7 @@ namespace UserManagement.MVC.Models
 
         public int KategorijaId { get; set; }
 
-        [DisplayName("Naziv kategorije")]
+        [DisplayName("Category name")]
         public string NazivKategorije { get; set; }
 
         public virtual ICollection<Usluga> Usluga { get; set; }

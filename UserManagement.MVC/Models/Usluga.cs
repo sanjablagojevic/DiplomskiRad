@@ -15,15 +15,15 @@ namespace UserManagement.MVC.Models
         }
 
         public int UslugaId { get; set; }
-        [DisplayName("Kategorija usluge")]
+        [DisplayName("Category")]
         public int? KategorijaId { get; set; }
-        [DisplayName("Naziv usluge")]
+        [DisplayName("Service name")]
         public string NazivUsluge { get; set; }
 
-        [DisplayName("Cijena usluge")]
+        [DisplayName("Cost")]
         [Column(TypeName = "decimal(18,2)")]
         public decimal CijenaUsluge { get; set; }
-        [DisplayName("Kategorija usluge")]
+        [DisplayName("Category")]
         public virtual Kategorija Kategorija { get; set; }
         public virtual ICollection<Narudzba> Narudzba { get; set; }
     }
