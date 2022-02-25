@@ -15,37 +15,37 @@ namespace UserManagement.MVC.Models
         }
 
         public int NarudzbaId { get; set; }
-        [DisplayName("Usluga")]
+        [DisplayName("Service")]
         public int? UslugaId { get; set; }
 
-        [DisplayName("Radnik")]
+        [DisplayName("Worker")]
         public String UserId { get; set; }
 
-        [DisplayName("Adresa naručioca")]
+        [DisplayName("Address")]
         [Required]
         public string AdresaNarudzbe { get; set; }
 
-        [DisplayName("Datum")]
+        [DisplayName("Date")]
         [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy.}")]
         [Required]
         public DateTime DatumNarudzbe { get; set; }
 
-        [DisplayName("Vrijeme početka")]
+        [DisplayName("Start time")]
         [DisplayFormat(DataFormatString = "{0:HH:mm}")]
         [Required]
         public DateTime? VrijemePocetka { get; set; }
 
-        [DisplayName("Vrijeme kraja")]
+        [DisplayName("End time")]
         public DateTime? VrijemeKraja { get; set; }
         public bool? NarudzbaPotvrdjena { get; set; }
-        [DisplayName("Email naručioca")]
+        [DisplayName("Email")]
         [Required]
         public string EmailNarucioca { get; set; }
-        [DisplayName("Broj telefona naručioca")]
+        [DisplayName("Mobile phone")]
         public string BrojTelefonaNarucioca { get; set; }
 
         public virtual ApplicationUser User { get; set; }
-        [DisplayName("Usluga")]
+        [DisplayName("Service")]
         public virtual Usluga Usluga { get; set; }
         public virtual ICollection<Placanje> Placanje { get; set; }
     }

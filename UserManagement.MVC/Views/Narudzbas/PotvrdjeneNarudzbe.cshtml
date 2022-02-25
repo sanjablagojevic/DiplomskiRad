@@ -209,7 +209,7 @@
                 </div>
             </form>
             <div class="card-header">
-                <h4>Lista narudžbi</h4>
+                <h4>Confirmed bookings</h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -222,12 +222,12 @@
                                             <label for="checkbox-all" class="custom-control-label">&nbsp;</label>
                                         </div>*@
                                 </th>
-                                <th>Adresa narudžbe</th>
-                                <th>Datum narudžbe</th>
-                                <th>Vrijeme početka</th>
-                                <th>Usluga</th>
-                                <th>Radnik</th>
-                                <th>Pošalji mejl potvrde</th>
+                                <th>Address</th>
+                                <th>Date</th>
+                                <th>Start time</th>
+                                <th>Service</th>
+                                <th>Worker</th>
+                                <th>Send confirmation e-mail</th>
                             </tr>
                         </thead>
                         <tbody class="text-center">
@@ -253,7 +253,7 @@
                                     @Html.DisplayFor(modelItem => item.User.FirstName) @Html.DisplayFor(modelItem => item.User.LastName)
                                 </td>
                                 <td>
-                                    <a asp-action="MejlPotvrde" asp-route-id="@item.NarudzbaId">Pošalji</a>
+                                    <a asp-action="MejlPotvrde" asp-route-id="@item.NarudzbaId">Send</a>
                                 </td>
                             </tr>
                             }

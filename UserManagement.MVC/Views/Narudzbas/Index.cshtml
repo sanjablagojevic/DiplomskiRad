@@ -198,7 +198,7 @@
     <div class="col-md-12 col-12 col-sm-12">
         <div class="card">
             <div class="card-header">
-                <h4>Lista narudžbi</h4>
+                <h4>List of all submitted bookings</h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -207,10 +207,10 @@
                             <tr>
                                 <th class="text-center">
                                 </th>
-                                <th>Adresa narudžbe</th>
-                                <th>Datum narudžbe</th>
-                                <th>Vrijeme početka</th>
-                                <th>Usluga</th>
+                                <th>Address</th>
+                                <th>Date</th>
+                                <th>Start time</th>
+                                <th>Service</th>
                                 <th class="text-center">
                                 </th>
                             </tr>
@@ -234,7 +234,7 @@
                                     @Html.DisplayFor(modelItem => item.Usluga.NazivUsluge)
                                 </td>
                                 <td>
-                                    <a asp-action="PotvrdiNarudzbu" asp-route-id="@item.NarudzbaId">Potvrdi</a>
+                                    <a asp-action="PotvrdiNarudzbu" asp-route-id="@item.NarudzbaId">Confirm</a>
                                 </td>
                             </tr>
                             }
