@@ -21,6 +21,8 @@ namespace UserManagement.MVC.Data
         public virtual DbSet<Usluga> Usluga { get; set; }
         public virtual DbSet<Utisak> Utisak { get; set; }
 
+        public virtual DbSet<Blog> Blog { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
