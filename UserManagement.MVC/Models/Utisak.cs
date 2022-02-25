@@ -21,13 +21,14 @@ namespace UserManagement.MVC.Models
 
         public String UserId { get; set; }
 
-        [DisplayName("Ocjena")]
+        [DisplayName("Mark")]
         [Column(TypeName = "decimal(18,2)")]
         public decimal Ocjena { get; set; }
 
-        [DisplayName("Komentar")]
+        [DisplayName("Comment")]
         public string Komentar { get; set; }
 
+        [DisplayName("Created")]
         [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy.}")]
         public DateTime? Kreirano { get; set; }
 
