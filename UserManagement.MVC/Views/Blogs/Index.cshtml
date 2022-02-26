@@ -22,9 +22,11 @@
         -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
         box-shadow: 0 1px 1px rgba(0,0,0,.05);
     }
+
     .panel-body {
         padding: 15px;
     }
+
     .image-wrapper {
         position: relative;
         display: block;
@@ -61,6 +63,7 @@
         -ms-transform: translateX(0%);
         -o-transform: translateX(0%);
     }
+
     .image-wrapper {
         height: 200px;
     }
@@ -92,6 +95,7 @@
         float: right;
         cursor: pointer;
     }
+
     .media {
         margin-top: 15px;
     }
@@ -110,13 +114,47 @@
     .media, .media-body {
         overflow: hidden;
         zoom: 1;
-        margin-left:5px;
+        margin-left: 5px;
     }
+    .form-control-borderless {
+        border: none;
+    }
+
+        .form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
+            border: none;
+            outline: none;
+            box-shadow: none;
+        }
 </style>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 <div class="row ml-5 mt-5 mb-5">
     <h2 class="text-muted">Guides, advice, expert insights, and the latest and greatest information on keeping your home beautiful.</h2>
     <hr>
+</div>
+<div class="container bootstrap snippets bootdey mb-3">
+    <br />
+    <div class="row">
+        <div class="col-12 col-md-10 col-lg-8">
+            <form class="card card-sm">
+                <div class="card-body row no-gutters align-items-center">
+                    <div class="col-auto">
+                        <i class="fas fa-search h4 text-body"></i>
+                    </div>
+                    <!--end of col-->
+                    <div class="col">
+                        <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search">
+                    </div>
+                    <!--end of col-->
+                    <div class="col-auto">
+                        <button class="btn btn-sm btn-primary" type="submit">Search</button>
+                    </div>
+                    <!--end of col-->
+                </div>
+            </form>
+        </div>
+        <!--end of col-->
+    </div>
 </div>
 <div class="container bootstrap snippets bootdey">
 
