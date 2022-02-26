@@ -18,11 +18,16 @@ namespace UserManagement.MVC.Models
 
         public String Title { get; set; }
 
+        [DisplayName("Short Description")]
         public String ShortDescription { get; set; }
 
+        [DisplayName("Description")]
         public String Description { get; set; }
 
+        [DisplayName("Picture")]
         public byte[] BlogPostPicture { get; set; }
+
+        //public DateTime Created { get; set; }
         public virtual ApplicationUser User { get; set; }
     }
 }
