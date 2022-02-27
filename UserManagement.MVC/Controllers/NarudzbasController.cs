@@ -28,9 +28,15 @@ namespace UserManagement.MVC.Controllers
             return await _userManager.GetUserAsync(HttpContext.User);
         }
         // GET: Narudzbas
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int p=1)
         {
-            var applicationDbContext = _context.Narudzba.Include(n => n.User).Include(n => n.Usluga).Where(n => n.NarudzbaPotvrdjena != true);
+            int pageSize = 5;
+            var applicationDbContext = _context.Narudzba.Include(n => n.User).Include(n => n.Usluga).Where(n => n.NarudzbaPotvrdjena != true).Skip((p - 1) * pageSize).Take(pageSize);
+
+            ViewBag.PageNumber = p;
+            ViewBag.PageRange = pageSize;
+            ViewBag.TotalPages = (int)Math.Ceiling((decimal)_context.Narudzba.Count() / pageSize);
+
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -186,9 +192,15 @@ namespace UserManagement.MVC.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> PotvrdjeneNarudzbe()
+        public async Task<IActionResult> PotvrdjeneNarudzbe(int p = 1)
         {
-            var potvrdjenjeNarudzbe = _context.Narudzba.Include(n => n.User).Include(n => n.Usluga).Where(m => m.NarudzbaPotvrdjena==true);
+            int pageSize = 5;
+            var potvrdjenjeNarudzbe = _context.Narudzba.Include(n => n.User).Include(n => n.Usluga).Where(m => m.NarudzbaPotvrdjena==true).Skip((p - 1) * pageSize).Take(pageSize);
+
+            ViewBag.PageNumber = p;
+            ViewBag.PageRange = pageSize;
+            ViewBag.TotalPages = (int)Math.Ceiling((decimal)potvrdjenjeNarudzbe.Count() / pageSize);
+
             return View(await potvrdjenjeNarudzbe.ToListAsync());
         }
 

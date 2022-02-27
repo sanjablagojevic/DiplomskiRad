@@ -26,9 +26,16 @@ namespace UserManagement.MVC.Controllers
             return await _userManager.GetUserAsync(HttpContext.User);
         }
         // GET: Blogs
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int p=1)
         {
-            var applicationDbContext = _context.Blog.Include(b => b.User);
+            int pageSize = 3;
+
+            var applicationDbContext = _context.Blog.Include(b => b.User).Skip((p - 1) * pageSize).Take(pageSize);
+
+            ViewBag.PageNumber = p;
+            ViewBag.PageRange = pageSize;
+            ViewBag.TotalPages = (int)Math.Ceiling((decimal)_context.Blog.Count() / pageSize);
+
             return View(await applicationDbContext.ToListAsync());
         }
 
