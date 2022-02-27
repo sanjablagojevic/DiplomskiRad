@@ -30,7 +30,7 @@ namespace UserManagement.MVC.Controllers
         {
             int pageSize = 3;
 
-            var applicationDbContext = _context.Blog.Include(b => b.User).Skip((p - 1) * pageSize).Take(pageSize);
+            var applicationDbContext = _context.Blog.Include(b => b.User).OrderByDescending(e => e.BlogPostId).Skip((p - 1) * pageSize).Take(pageSize);
 
             ViewBag.PageNumber = p;
             ViewBag.PageRange = pageSize;
