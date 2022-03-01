@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -15,11 +17,13 @@ namespace UserManagement.MVC.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IWebHostEnvironment webHostEnvironment;
 
-        public BlogsController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
+        public BlogsController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, IWebHostEnvironment hostEnvironment)
         {
             _context = context;
             _userManager = userManager;
+            webHostEnvironment = hostEnvironment;
         }
         private async Task<ApplicationUser> GetCurrentUser()
         {
@@ -70,7 +74,7 @@ namespace UserManagement.MVC.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("BlogPostId,UserId,Title,ShortDescription,Description,BlogPostPicture")] Blog blog)
+        public async Task<IActionResult> Create([Bind("BlogPostId,UserId,Title,ShortDescription,Description,BlogPostPicture")] BlogViewModel blog)
         {
             var user = await GetCurrentUser();
             string userEmail = user.Email; // Here you gets user email 
@@ -78,12 +82,38 @@ namespace UserManagement.MVC.Controllers
             blog.UserId = userId;
             if (ModelState.IsValid)
             {
-                _context.Add(blog);
+                string uniqueFileName = UploadedFile(blog);
+                Blog blogPost = new Blog
+                {
+                    UserId = userId,
+                    Title=blog.Title,
+                    ShortDescription=blog.ShortDescription,
+                    Description=blog.Description,
+                    BlogPostPicture=uniqueFileName
+                };
+                _context.Add(blogPost);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", blog.UserId);
             return View(blog);
+        }
+
+        private string UploadedFile(BlogViewModel model)
+        {
+            string uniqueFileName = null;
+
+            if (model.BlogPostPicture != null)
+            {
+                string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "images");
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + model.BlogPostPicture.FileName;
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    model.BlogPostPicture.CopyTo(fileStream);
+                }
+            }
+            return uniqueFileName;
         }
 
         // GET: Blogs/Edit/5
