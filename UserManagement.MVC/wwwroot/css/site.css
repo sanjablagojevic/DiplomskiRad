@@ -90,4 +90,19 @@ body {
     -ms-transform: translateX(-50%) translateY(-50%);
     -webkit-transform: translate(-50%,-50%);
     transform: translate(-50%,-50%);
-}   
+}
+.btn-info {
+    color: #fff;
+    background-color: #518bdc;
+    border-color: #518bdc;
+}
+.btn-info:hover {
+    color: #fff;
+    background-color: #518bdc;
+    border-color: #518bdc;
+}
+.topcorner {
+    position: absolute;
+    top: 5%;
+    right: 2%;
+}
