@@ -211,6 +211,7 @@
                                 <th>Date</th>
                                 <th>Start time</th>
                                 <th>Service</th>
+                                <th>User</th>
                                 <th class="text-center">
                                 </th>
                             </tr>
@@ -218,25 +219,28 @@
                         <tbody class="text-center">
                             @foreach (var item in Model)
                             {
-                                <tr>
-                                    <td class="text-center">
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.AdresaNarudzbe)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.DatumNarudzbe)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.VrijemePocetka)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Usluga.NazivUsluge)
-                                    </td>
-                                    <td>
-                                        <a asp-action="PotvrdiNarudzbu" asp-route-id="@item.NarudzbaId">Confirm</a>
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td class="text-center">
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.AdresaNarudzbe)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DatumNarudzbe)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.VrijemePocetka)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Usluga.NazivUsluge)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.EmailNarucioca)
+                                </td>
+                                <td>
+                                    <a asp-action="PotvrdiNarudzbu" asp-route-id="@item.NarudzbaId">Confirm</a>
+                                </td>
+                            </tr>
                             }
                         </tbody>
                     </table>

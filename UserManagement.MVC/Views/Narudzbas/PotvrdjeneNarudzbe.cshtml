@@ -226,6 +226,7 @@
                                 <th>Date</th>
                                 <th>Start time</th>
                                 <th>Service</th>
+                                <th>User</th>
                                 <th>Worker</th>
                                 <th>Send confirmation e-mail</th>
                             </tr>
@@ -233,29 +234,32 @@
                         <tbody class="text-center">
                             @foreach (var item in Model)
                             {
-                                <tr>
-                                    <td class="text-center">
-                                        @*@Html.DisplayFor(modelItem => item.NarudzbaId)*@
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.AdresaNarudzbe)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.DatumNarudzbe)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.VrijemePocetka)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Usluga.NazivUsluge)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.User.FirstName) @Html.DisplayFor(modelItem => item.User.LastName)
-                                    </td>
-                                    <td>
-                                        <a asp-action="MejlPotvrde" asp-route-id="@item.NarudzbaId">Send</a>
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td class="text-center">
+                                    @*@Html.DisplayFor(modelItem => item.NarudzbaId)*@
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.AdresaNarudzbe)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DatumNarudzbe)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.VrijemePocetka)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Usluga.NazivUsluge)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.EmailNarucioca)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.User.FirstName) @Html.DisplayFor(modelItem => item.User.LastName)
+                                </td>
+                                <td>
+                                    <a asp-action="MejlPotvrde" asp-route-id="@item.NarudzbaId">Send</a>
+                                </td>
+                            </tr>
                             }
                         </tbody>
                     </table>
