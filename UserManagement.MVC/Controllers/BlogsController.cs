@@ -74,7 +74,7 @@ namespace UserManagement.MVC.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("BlogPostId,UserId,Title,ShortDescription,Description,BlogPostPicture")] BlogViewModel blog)
+        public async Task<IActionResult> Create([Bind("BlogPostId,UserId,Title,ShortDescription,Description")] BlogViewModel blog)
         {
             var user = await GetCurrentUser();
             string userEmail = user.Email; // Here you gets user email 
@@ -82,14 +82,12 @@ namespace UserManagement.MVC.Controllers
             blog.UserId = userId;
             if (ModelState.IsValid)
             {
-                string uniqueFileName = UploadedFile(blog);
                 Blog blogPost = new Blog
                 {
                     UserId = userId,
                     Title=blog.Title,
                     ShortDescription=blog.ShortDescription,
                     Description=blog.Description,
-                    BlogPostPicture=uniqueFileName
                 };
                 _context.Add(blogPost);
                 await _context.SaveChangesAsync();
@@ -99,22 +97,6 @@ namespace UserManagement.MVC.Controllers
             return View(blog);
         }
 
-        private string UploadedFile(BlogViewModel model)
-        {
-            string uniqueFileName = null;
-
-            if (model.BlogPostPicture != null)
-            {
-                string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "images");
-                uniqueFileName = Guid.NewGuid().ToString() + "_" + model.BlogPostPicture.FileName;
-                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
-                {
-                    model.BlogPostPicture.CopyTo(fileStream);
-                }
-            }
-            return uniqueFileName;
-        }
 
         // GET: Blogs/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -138,7 +120,7 @@ namespace UserManagement.MVC.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("BlogPostId,UserId,Title,ShortDescription,Description,BlogPostPicture")] Blog blog)
+        public async Task<IActionResult> Edit(int id, [Bind("BlogPostId,UserId,Title,ShortDescription,Description")] Blog blog)
         {
             if (id != blog.BlogPostId)
             {

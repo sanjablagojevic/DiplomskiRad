@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -25,10 +26,11 @@ namespace UserManagement.MVC.Models
         [DisplayName("Description")]
         public String Description { get; set; }
 
+        [NotMapped]
         [DisplayName("Picture")]
-        public String BlogPostPicture { get; set; }
+        public IFormFile BlogPostPicture { get; set; }
 
-        //public DateTime Created { get; set; }
+        public DateTime Created { get; set; }
         public virtual ApplicationUser User { get; set; }
     }
 }
