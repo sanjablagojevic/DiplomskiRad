@@ -207,9 +207,9 @@ namespace UserManagement.MVC.Controllers
         [HttpGet]
         public async Task<IActionResult> MojeNarudzbe()
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userId = User.FindFirstValue(ClaimTypes.Email);
 
-            var mojeNarudzbe = _context.Narudzba.Include(n => n.User).Include(n => n.Usluga).Where(m => m.NarudzbaPotvrdjena == true).Where(x => x.UserId == userId);
+            var mojeNarudzbe = _context.Narudzba.Include(n => n.User).Include(n => n.Usluga).Where(m => m.NarudzbaPotvrdjena == true).Where(x => x.User.Email == userId);
             return View(await mojeNarudzbe.ToListAsync());
         }
         public async Task<ActionResult> MejlPotvrde(int? id)
