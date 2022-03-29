@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using UserManagement.MVC.Data;
 using UserManagement.MVC.Models;
+using static UserManagement.MVC.Helper;
 
 namespace UserManagement.MVC.Controllers
 {
@@ -51,6 +52,62 @@ namespace UserManagement.MVC.Controllers
             return View(utisak);
         }
 
+        [NoDirectAccess]
+        public async Task<IActionResult> AddOrEdit(int id = 0)
+        {
+            if (id == 0)
+                return View(new Utisak());
+            else
+            {
+                var utisak = await _context.Utisak.FindAsync(id);
+                if (utisak == null)
+                {
+                    return NotFound();
+                }
+                return View(utisak);
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddOrEdit(int id, [Bind("UtisakId,UserId,Ocjena,Komentar,Kreirano")] Utisak utisak)
+        {
+            var user = await GetCurrentUser();
+            string userEmail = user.Email; // Here you gets user email 
+            string userId = user.Id;
+            utisak.UserId = userId;
+
+            if (ModelState.IsValid)
+            {
+                //Insert
+                if (id == 0)
+                {
+                    utisak.Kreirano = DateTime.Now;
+                    _context.Add(utisak);
+                    await _context.SaveChangesAsync();
+                   
+
+                }
+                //Update
+                else
+                {
+                    try
+                    {
+                        _context.Update(utisak);
+                        await _context.SaveChangesAsync();
+                    }
+                    catch (DbUpdateConcurrencyException)
+                    {
+                        if (!UtisakExists(utisak.UtisakId))
+                        { return NotFound(); }
+                        else
+                        { throw; }
+                    }
+                }
+                return Json(new { isValid = true, html = Helper.RenderRazorViewToString(this, "Index", _context.Utisak.ToList()) });
+            }
+            return Json(new { isValid = false, html = Helper.RenderRazorViewToString(this, "AddOrEdit", utisak) });
+        }
         [HttpGet]
         public IActionResult Create()
         {
