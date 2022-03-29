@@ -218,9 +218,9 @@
                             <tr>
                                 <th class="text-center">
                                     @*<div class="custom-checkbox custom-checkbox-table custom-control">
-                                        <input type="checkbox" data-checkboxes="mygroup" data-checkbox-role="dad" class="custom-control-input" id="checkbox-all">
-                                        <label for="checkbox-all" class="custom-control-label">&nbsp;</label>
-                                    </div>*@
+                <input type="checkbox" data-checkboxes="mygroup" data-checkbox-role="dad" class="custom-control-input" id="checkbox-all">
+                <label for="checkbox-all" class="custom-control-label">&nbsp;</label>
+            </div>*@
                                 </th>
                                 <th>Address</th>
                                 <th>Date</th>
@@ -229,6 +229,7 @@
                                 <th>User</th>
                                 <th>Worker</th>
                                 <th>Send confirmation e-mail</th>
+                                <th>Invoice</th>
                             </tr>
                         </thead>
                         <tbody class="text-center">
@@ -258,6 +259,9 @@
                                 </td>
                                 <td>
                                     <a asp-action="MejlPotvrde" asp-route-id="@item.NarudzbaId">Send</a>
+                                </td>
+                                <td>
+                                    <a asp-action="Invoice" asp-route-id="@item.NarudzbaId">Send</a>
                                 </td>
                             </tr>
                             }

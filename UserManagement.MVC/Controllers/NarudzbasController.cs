@@ -235,5 +235,11 @@ namespace UserManagement.MVC.Controllers
             return RedirectToAction("Index", "Home");
 
         }
+
+        public async Task<ActionResult> Invoice(int? id)
+        {
+            Narudzba narudzba = await _context.Narudzba.FindAsync(id);
+            return View(narudzba);
+        }
     }
 }
