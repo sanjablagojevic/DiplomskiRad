@@ -22,8 +22,7 @@ namespace UserManagement.MVC.Models
         public String UserId { get; set; }
 
         [DisplayName("Mark")]
-        [Column(TypeName = "decimal(18,2)")]
-        public decimal Ocjena { get; set; }
+        public int Ocjena { get; set; }
 
         [DisplayName("Comment")]
         public string Komentar { get; set; }
