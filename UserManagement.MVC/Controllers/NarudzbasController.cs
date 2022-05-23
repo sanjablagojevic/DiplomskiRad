@@ -229,7 +229,7 @@ namespace UserManagement.MVC.Controllers
             smtp.Port = 587;
             smtp.UseDefaultCredentials = true;
             smtp.EnableSsl = true;
-            smtp.Credentials = new System.Net.NetworkCredential("sanjab2801@gmail.com", "harizma2801");
+            smtp.Credentials = new System.Net.NetworkCredential("sanjab2801@gmail.com", "ViliMicika<3");
             smtp.Send(mm);
             ViewBag.message = "This Mail Has Been Sent To " + to + " Successfully...!";
             return RedirectToAction("Index", "Home");
