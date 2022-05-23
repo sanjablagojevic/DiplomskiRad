@@ -75,6 +75,9 @@ namespace UserManagement.MVC.Areas.Identity.Pages.Account
             [DataType(DataType.PhoneNumber)]
             [Display(Name = "Phone Number")]
             public string PhoneNumber { get; set; }
+
+            [Display(Name = "Adress")]
+            public string Adress { get; set; }
         }
 
         public async Task OnGetAsync(string returnUrl = null)
@@ -95,7 +98,7 @@ namespace UserManagement.MVC.Areas.Identity.Pages.Account
             var role = _roleManager.FindByNameAsync("Basic").Result;
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email, FirstName = Input.FirstName, LastName = Input.LastName, PhoneNumber = Input.PhoneNumber };
+                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email, FirstName = Input.FirstName, LastName = Input.LastName, PhoneNumber = Input.PhoneNumber, Adress=Input.Adress };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
