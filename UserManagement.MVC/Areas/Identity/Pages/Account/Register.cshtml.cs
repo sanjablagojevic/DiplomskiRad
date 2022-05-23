@@ -76,7 +76,7 @@ namespace UserManagement.MVC.Areas.Identity.Pages.Account
             [Display(Name = "Phone Number")]
             public string PhoneNumber { get; set; }
 
-            [Display(Name = "Adress")]
+            [Display(Name = "Address")]
             public string Adress { get; set; }
         }
 

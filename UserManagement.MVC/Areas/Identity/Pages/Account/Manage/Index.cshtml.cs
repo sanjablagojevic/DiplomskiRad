@@ -48,6 +48,8 @@ namespace UserManagement.MVC.Areas.Identity.Pages.Account.Manage
             public string PhoneNumber { get; set; }
             [Display(Name = "Profile picture")]
             public byte[] ProfilePicture { get; set; }
+            [Display(Name = "Address")]
+            public string Adress { get; set; }
         }
 
         private async Task LoadAsync(ApplicationUser user)
@@ -57,6 +59,7 @@ namespace UserManagement.MVC.Areas.Identity.Pages.Account.Manage
             var firstName = user.FirstName;
             var lastName = user.LastName;
             var profilePicture = user.ProfilePicture;
+            var adress = user.Adress;
             Username = userName;
 
             Input = new InputModel
@@ -65,7 +68,8 @@ namespace UserManagement.MVC.Areas.Identity.Pages.Account.Manage
                 Username = userName,
                 FirstName = firstName,
                 LastName = lastName,
-                ProfilePicture = profilePicture
+                ProfilePicture = profilePicture,
+                Adress=adress
             };
         }
 
@@ -107,6 +111,7 @@ namespace UserManagement.MVC.Areas.Identity.Pages.Account.Manage
             }
             var firstName = user.FirstName;
             var lastName = user.LastName;
+            var adress = user.Adress;
             if (Input.FirstName != firstName)
             {
 
@@ -116,6 +121,12 @@ namespace UserManagement.MVC.Areas.Identity.Pages.Account.Manage
             if (Input.LastName != lastName)
             {
                 user.LastName = Input.LastName;
+                await _userManager.UpdateAsync(user);
+            }
+            if (Input.Adress != adress)
+            {
+
+                user.Adress = Input.Adress;
                 await _userManager.UpdateAsync(user);
             }
             if (user.UsernameChangeLimit > 0)
