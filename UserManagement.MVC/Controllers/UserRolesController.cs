@@ -19,9 +19,16 @@ namespace UserManagement.MVC.Controllers
             _roleManager = roleManager;
             _userManager = userManager;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString, int p = 1)
         {
+
+            int pageSize = 10;
+
             var users = await _userManager.Users.ToListAsync();
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                users = (List<ApplicationUser>)users.Where(s => s.Email!.Contains(searchString)).ToList();
+            }
             var userRolesViewModel = new List<UserRolesViewModel>();
             foreach (ApplicationUser user in users)
             {
@@ -34,6 +41,11 @@ namespace UserManagement.MVC.Controllers
                 thisViewModel.isActive = user.EmailConfirmed;
                 userRolesViewModel.Add(thisViewModel);
             }
+            userRolesViewModel.Skip((p - 1) * pageSize).Take(pageSize);
+            ViewBag.PageNumber = p;
+            ViewBag.PageRange = pageSize;
+            ViewBag.TotalPages = (int)Math.Ceiling((decimal)userRolesViewModel.Count() / pageSize);
+
             return View(userRolesViewModel);
         }
 

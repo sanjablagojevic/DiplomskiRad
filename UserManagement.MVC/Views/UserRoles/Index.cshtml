@@ -161,12 +161,45 @@
         -webkit-transition: width .6s ease;
         transition: width .6s ease;
     }
+
+    .form-control-borderless {
+        border: none;
+    }
+
+        .form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
+            border: none;
+            outline: none;
+            box-shadow: none;
+        }
 </style>
 <div class="container mt-2">
     <div class="col-md-12 col-12 col-sm-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title text-uppercase mb-0">Users</h4>
+                <div class="container bootstrap snippets bootdey mb-3">
+                    <br />
+                    <div class="row">
+                        <div class="col-12 col-md-12 col-lg-12">
+                            <form asp-controller="UserRoles" asp-action="Index" method="get" class="card card-sm">
+                                <div class="card-body row no-gutters align-items-center">
+                                    <div class="col-auto">
+                                        <i class="fas fa-search h4 text-body"></i>
+                                    </div>
+                                    <!--end of col-->
+                                    <div class="col">
+                                        <input class="form-control form-control-lg form-control-borderless" type="text" name="SearchString" />
+                                    </div>
+                                    <!--end of col-->
+                                    <div class="col-auto">
+                                        <input class="btn btn-sm btn-primary" type="submit" value="Search" />
+                                    </div>
+                                    <!--end of col-->
+                                </div>
+                            </form>
+                        </div>
+                        <!--end of col-->
+                    </div>
+                </div>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -203,7 +236,7 @@
                                         <a type="button" class="ml-2" asp-controller="UserRoles" asp-action="Manage" asp-route-userId="@user.UserId"><i class="fa fa-edit"></i> </a>
                                     </td>
                                 </tr>
-}
+                            }
                         </tbody>
                     </table>
                 </div>
@@ -211,4 +244,7 @@
             </div>
         </div>
     </div>
+</div>
+<div class="d-flex w-100 justify-content-center">
+    <pagination page-count="@ViewBag.TotalPages" page-target="/userroles/index/" page-number="@ViewBag.PageNumber" page-range="@ViewBag.PageRange"></pagination>
 </div>
