@@ -423,7 +423,7 @@ img {
                         </div>
                     </div>
                     <div class="article-content">
-                        <p>@Html.DisplayFor(model => model.Description)</p>
+                        <p>@Html.Raw(Model.Description)</p>
                     </div>
                     <div>
                         <a asp-action="Index">Back to List</a>
