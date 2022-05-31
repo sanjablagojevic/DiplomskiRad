@@ -31,7 +31,7 @@ namespace UserManagement.MVC.Controllers
         public async Task<IActionResult> Index(int p=1)
         {
             int pageSize = 5;
-            var applicationDbContext = _context.Narudzba.Include(n => n.User).Include(n => n.Usluga).Where(n => n.NarudzbaPotvrdjena != true).Skip((p - 1) * pageSize).Take(pageSize);
+            var applicationDbContext = _context.Narudzba.Include(n => n.User).Include(n => n.Usluga).Where(n => n.NarudzbaPotvrdjena != true).Skip((p - 1) * pageSize).Take(pageSize).OrderBy(n=>n.DatumNarudzbe);
 
             ViewBag.PageNumber = p;
             ViewBag.PageRange = pageSize;
@@ -209,7 +209,7 @@ namespace UserManagement.MVC.Controllers
         {
             var userId = User.FindFirstValue(ClaimTypes.Email);
 
-            var mojeNarudzbe = _context.Narudzba.Include(n => n.User).Include(n => n.Usluga).Where(m => m.NarudzbaPotvrdjena == true).Where(x => x.User.Email == userId);
+            var mojeNarudzbe = _context.Narudzba.Include(n => n.User).Include(n => n.Usluga).Where(m => m.NarudzbaPotvrdjena == true).Where(m=>m.EmailNarucioca==userId;
             return View(await mojeNarudzbe.ToListAsync());
         }
         public async Task<ActionResult> MejlPotvrde(int? id)
