@@ -209,7 +209,7 @@ namespace UserManagement.MVC.Controllers
         {
             var userId = User.FindFirstValue(ClaimTypes.Email);
 
-            var mojeNarudzbe = _context.Narudzba.Include(n => n.User).Include(n => n.Usluga).Where(m => m.NarudzbaPotvrdjena == true).Where(m=>m.EmailNarucioca==userId;
+            var mojeNarudzbe = _context.Narudzba.Include(n => n.User).Include(n => n.Usluga).Where(m => m.NarudzbaPotvrdjena == true).Where(m=>m.EmailNarucioca==userId);
             return View(await mojeNarudzbe.ToListAsync());
         }
         public async Task<ActionResult> MejlPotvrde(int? id)

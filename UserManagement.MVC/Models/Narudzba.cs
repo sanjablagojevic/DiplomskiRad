@@ -44,6 +44,8 @@ namespace UserManagement.MVC.Models
         [DisplayName("Mobile phone")]
         public string BrojTelefonaNarucioca { get; set; }
 
+        public decimal BrojKvadrata { get; set; }
+
         public virtual ApplicationUser User { get; set; }
         [DisplayName("Service")]
         public virtual Usluga Usluga { get; set; }
