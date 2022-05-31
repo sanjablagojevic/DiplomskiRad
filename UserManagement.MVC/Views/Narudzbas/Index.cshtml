@@ -210,6 +210,7 @@
                                 <th>Address</th>
                                 <th>Date</th>
                                 <th>Start time</th>
+                                <th>Surface</th>
                                 <th>Service</th>
                                 <th>User</th>
                                 <th class="text-center">
@@ -230,6 +231,9 @@
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.VrijemePocetka)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.BrojKvadrata)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Usluga.NazivUsluge)

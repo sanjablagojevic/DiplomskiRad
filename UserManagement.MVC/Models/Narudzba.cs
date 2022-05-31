@@ -43,7 +43,7 @@ namespace UserManagement.MVC.Models
         public string EmailNarucioca { get; set; }
         [DisplayName("Mobile phone")]
         public string BrojTelefonaNarucioca { get; set; }
-
+        [DisplayName("Surface")]
         public decimal BrojKvadrata { get; set; }
 
         public virtual ApplicationUser User { get; set; }
