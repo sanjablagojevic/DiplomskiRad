@@ -30,7 +30,7 @@ namespace UserManagement.MVC.Controllers
         // GET: Narudzbas
         public async Task<IActionResult> Index(int p=1)
         {
-            int pageSize = 5;
+            int pageSize = 7;
             var applicationDbContext = _context.Narudzba.Include(n => n.User).Include(n => n.Usluga).Where(n => n.NarudzbaPotvrdjena != true).Skip((p - 1) * pageSize).Take(pageSize).OrderBy(n=>n.DatumNarudzbe);
 
             ViewBag.PageNumber = p;
@@ -194,12 +194,12 @@ namespace UserManagement.MVC.Controllers
         [HttpGet]
         public async Task<IActionResult> PotvrdjeneNarudzbe(int p = 1)
         {
-            int pageSize = 5;
-            var potvrdjenjeNarudzbe = _context.Narudzba.Include(n => n.User).Include(n => n.Usluga).Where(m => m.NarudzbaPotvrdjena==true).Skip((p - 1) * pageSize).Take(pageSize);
+            int pageSize = 7;
+            var potvrdjenjeNarudzbe = _context.Narudzba.Include(n => n.User).Include(n => n.Usluga).Where(m => m.NarudzbaPotvrdjena==true).Skip((p - 1) * pageSize).Take(pageSize).OrderByDescending(d=>d.DatumNarudzbe);
 
             ViewBag.PageNumber = p;
             ViewBag.PageRange = pageSize;
-            ViewBag.TotalPages = (int)Math.Ceiling((decimal)potvrdjenjeNarudzbe.Count() / pageSize);
+            ViewBag.TotalPages = (int)Math.Ceiling((decimal)_context.Narudzba.Count() / pageSize);
 
             return View(await potvrdjenjeNarudzbe.ToListAsync());
         }
