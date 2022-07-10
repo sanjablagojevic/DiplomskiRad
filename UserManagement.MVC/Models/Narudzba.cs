@@ -36,6 +36,7 @@ namespace UserManagement.MVC.Models
         public DateTime? VrijemePocetka { get; set; }
 
         [DisplayName("End time")]
+        [DisplayFormat(DataFormatString = "{0:HH:mm}")]
         public DateTime? VrijemeKraja { get; set; }
         public bool? NarudzbaPotvrdjena { get; set; }
         [DisplayName("Email")]
