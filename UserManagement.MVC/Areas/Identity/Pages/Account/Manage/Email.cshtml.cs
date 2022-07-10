@@ -31,7 +31,7 @@ namespace UserManagement.MVC.Areas.Identity.Pages.Account.Manage
             _emailSender = emailSender;
         }
 
-        [DisplayName("Korisničko ime")]
+        [DisplayName("Username")]
         public string Username { get; set; }
 
         public string Email { get; set; }
@@ -48,7 +48,7 @@ namespace UserManagement.MVC.Areas.Identity.Pages.Account.Manage
         {
             [Required]
             [EmailAddress]
-            [Display(Name = "Novi email")]
+            [Display(Name = "New Email")]
             public string NewEmail { get; set; }
         }
 
