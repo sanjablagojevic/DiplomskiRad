@@ -217,9 +217,9 @@
                             <tr>
                                 <th class="text-center">
                                     @*<div class="custom-checkbox custom-checkbox-table custom-control">
-                <input type="checkbox" data-checkboxes="mygroup" data-checkbox-role="dad" class="custom-control-input" id="checkbox-all">
-                <label for="checkbox-all" class="custom-control-label">&nbsp;</label>
-            </div>*@
+                                            <input type="checkbox" data-checkboxes="mygroup" data-checkbox-role="dad" class="custom-control-input" id="checkbox-all">
+                                            <label for="checkbox-all" class="custom-control-label">&nbsp;</label>
+                                        </div>*@
                                 </th>
                                 <th>Address</th>
                                 <th>Date</th>
@@ -235,46 +235,46 @@
                         <tbody class="text-center">
                             @foreach (var item in Model)
                             {
-                            <tr>
-                                <td class="text-center">
-                                    @*@Html.DisplayFor(modelItem => item.NarudzbaId)*@
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.AdresaNarudzbe)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.DatumNarudzbe)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.VrijemePocetka)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.VrijemeKraja)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Usluga.NazivUsluge)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.EmailNarucioca)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.User.FirstName) @Html.DisplayFor(modelItem => item.User.LastName)
-                                </td>
-                                <td>
-                                    <a asp-action="MejlPotvrde" asp-route-id="@item.NarudzbaId">Send</a>
-                                </td>
-                                <td>
-                                    <a asp-action="Invoice" asp-route-id="@item.NarudzbaId">Open</a>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td class="text-center">
+                                        @*@Html.DisplayFor(modelItem => item.NarudzbaId)*@
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.AdresaNarudzbe)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DatumNarudzbe)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.VrijemePocetka)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.VrijemeKraja)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Usluga.NazivUsluge)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.EmailNarucioca)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.User.FirstName) @Html.DisplayFor(modelItem => item.User.LastName)
+                                    </td>
+                                    <td>
+                                        <a asp-action="MejlPotvrde" asp-route-id="@item.NarudzbaId">Send</a>
+                                    </td>
+                                    <td>
+                                        <a asp-action="Invoice" asp-route-id="@item.NarudzbaId">Open</a>
+                                    </td>
+                                </tr>
                             }
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-        <div class="d-flex w-100 justify-content-center">
-            <pagination page-count="@ViewBag.TotalPages" page-target="/narudzbas/potvrdjenenarudzbe/" page-number="@ViewBag.PageNumber" page-range="@ViewBag.PageRange"></pagination>
-        </div>
+    </div>
+    <div class="d-flex w-100 justify-content-center mt-5">
+        <pagination page-count="@ViewBag.TotalPages" page-target="/narudzbas/potvrdjenenarudzbe/" page-number="@ViewBag.PageNumber" page-range="@ViewBag.PageRange"></pagination>
     </div>
 </div>

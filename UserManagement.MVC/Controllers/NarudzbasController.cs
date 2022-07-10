@@ -208,11 +208,15 @@ namespace UserManagement.MVC.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> MojeNarudzbe()
+        public async Task<IActionResult> MojeNarudzbe(int p=1)
         {
+            int pageSize = 5;
             var userId = User.FindFirstValue(ClaimTypes.Email);
 
-            var mojeNarudzbe = _context.Narudzba.Include(n => n.User).Include(n => n.Usluga).Where(m => m.NarudzbaPotvrdjena == true).Where(m => m.User.Email== "superadmin@gmail.com");
+            var mojeNarudzbe = _context.Narudzba.Include(n => n.User).Include(n => n.Usluga).Where(m => m.NarudzbaPotvrdjena == true).Where(m => m.User.Email== "superadmin@gmail.com").Skip((p - 1) * pageSize).Take(pageSize);
+            ViewBag.PageNumber = p;
+            ViewBag.PageRange = pageSize;
+            ViewBag.TotalPages = (int)Math.Ceiling((decimal)_context.Narudzba.Count() / pageSize);
             return View(await mojeNarudzbe.ToListAsync());
         }
         public async Task<ActionResult> MejlPotvrde(int? id)
