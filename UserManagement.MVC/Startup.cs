@@ -1,3 +1,5 @@
+using AspNetCoreHero.ToastNotification;
+using AspNetCoreHero.ToastNotification.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -41,7 +43,7 @@ namespace UserManagement.MVC
                 googleOptions.ClientId = Configuration["GoogleLogin:ClientId"];
                 googleOptions.ClientSecret = Configuration["GoogleLogin:ClientSecret"];
             });
-           
+            services.AddNotyf(config => { config.DurationInSeconds = 10; config.IsDismissable = true; config.Position = NotyfPosition.TopRight; });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -62,6 +64,7 @@ namespace UserManagement.MVC
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseNotyf();
 
             app.UseAuthentication();
             app.UseAuthorization();

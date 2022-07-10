@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Mail;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using AspNetCoreHero.ToastNotification.Abstractions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -17,11 +18,13 @@ namespace UserManagement.MVC.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
+        public INotyfService _notifyService { get; }
 
-        public NarudzbasController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
+        public NarudzbasController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, INotyfService notifyService)
         {
             _context = context;
             _userManager = userManager;
+            _notifyService = notifyService;
         }
         private async Task<ApplicationUser> GetCurrentUser()
         {
@@ -230,10 +233,12 @@ namespace UserManagement.MVC.Controllers
             smtp.UseDefaultCredentials = true;
             smtp.EnableSsl = true;
             smtp.Credentials = new System.Net.NetworkCredential("sanjab2801@gmail.com", "ViliMicika<3");
-            smtp.Send(mm);
+            //smtp.Send(mm);
+            
             ViewBag.message = "This Mail Has Been Sent To " + to + " Successfully...!";
-            return RedirectToAction("Index", "Home");
-
+            _notifyService.Success("Confirmation E-mail Has Been Sent Sucessfully!", 5);
+            return RedirectToAction("PotvrdjeneNarudzbe", "Narudzbas");
+            
         }
 
         public async Task<ActionResult> Invoice(int? id)
