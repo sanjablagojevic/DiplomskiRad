@@ -135,10 +135,13 @@
         <h2 class="text-muted">Guides, advice, expert insights, and the latest and greatest information on keeping your home beautiful.</h2>
         <hr>
     </div>
-    <div class="topcorner">
-        <a class="btn btn-info" asp-action="Create"><i class="fas fa-plus mr-2"></i>Create</a>
+    @if (User.IsInRole("Moderator"))
+    {
+        <div class="topcorner">
+            <a class="btn btn-info" asp-action="Create"><i class="fas fa-plus mr-2"></i>Create</a>
+        </div>
+    }
     </div>
-</div>
 <div class="container bootstrap snippets bootdey mb-3">
     <br />
     <div class="row">
